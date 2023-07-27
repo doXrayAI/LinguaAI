@@ -5,23 +5,23 @@
                                         },
 
     "role_inference_description":{
-                        "template": "Based on a provided setting description, infere two roles involved in the conversation in the provided setting. Assign a more moderatory role to GPT and the other to user. Format the output as: \n\"setting\": \"SETTING\" \n\"roles\": [\"ROLE1\", \"ROLE2\"] \n\"GPT_role\": \"ROLE\" \n\"user_role\": \"ROLE\" ",
+                        "template": "Based on a provided setting description, infere two roles involved in the conversation in the provided setting. Assign a more moderatory role to GPT and the other to user. Fully adhere to the output format roles\": [\"ROLE1\", \"ROLE2\"],\"GPT_role\": \"ROLE\",\"user_role\": \"ROLE\" ",
                         "n_args": 0   
                     },
     
     "role_inference_examples":{
-                        "template": "Examples:\n",
+                        "template": "Examples:\n\n",
                         "n_args": 0,   
                         "choices": [
-                            "setting: A conversation in a cafe in english.\nroles: [waiter, customer]\nGPT_role: waiter\nuser_role: customer\n\n",
-                            "setting: A conversation in a library in german.\nroles:  [student, librarian]\nGPT_role: librarian\nuser_role: student\n\n",
-                            "setting: A conversation with a friend in swedish.\npersons: [friend, me]\nGPT_role: friend\nuser_role: me\n\n",
-                            "setting: A conversation in a police station.\npersons:  [Policeman, me]\nGPT_role: Policeman\nuser_role: me"
+                            "\"setting\": \"A conversation in a cafe in english.\", \"roles\": [\"waiter\", \"customer\"], \"GPT_role\": \"waiter\", \"user_role\": \"customer\"\n",
+                            "\"setting\": \"A conversation in a library.\", \"roles\": [\"student\", \"librarian\"], \"GPT_role\": \"librarian\", \"user_role\": \"student\"\n",
+                            "\"setting\": \"A conversation with a friend.\", \"roles\": [\"me\", \"friend\"], \"GPT_role\": \"friend\", \"user_role\": \"me\"\n",
+                            "\"setting\": \"In a police station.\", \"roles\": [\"me\", \"policeman\"], \"GPT_role\": \"policeman\", \"user_role\": \"me\"\n"
                         ]
                     },
     
     "role_inference_query": {
-                            "template": "setting: {}",
+                            "template": "\"setting\": \"{}\"",
                             "n_args": 1
                         },
 
