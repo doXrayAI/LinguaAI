@@ -9,6 +9,5 @@ GPTParameters = namedtuple('GPTParameters'
 
 
 default_chat_completion_parameters = GPTParameters()
-default_completion_parameters = GPTParameters('text-davinci-003', 0.9, 800, 0.95, 0, 0, None)
 
 default_system_prompt = "You are an AI assistant that helps people find information."

@@ -1,10 +1,10 @@
 import unittest
-from src.completion_thread import CompletionThread
+from src.single_run_thread import SingleRunThread
 
-class TestCompletionThread(unittest.TestCase):
+class TestSingleRunThread(unittest.TestCase):
     
     def test_send(self):
-        t = CompletionThread()
+        t = SingleRunThread()
         
         res = t.send("2+3=")
         self.assertEqual(res, '5')

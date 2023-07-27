@@ -22,7 +22,7 @@ class PromptBuilderTest(unittest.TestCase):
         b = PromptBuilder()
         b.add_template('Template {}', (1,)).add_template('Template {}', (2,))
         prompt = b.build()
-        self.assertEqual(prompt, 'Template 1 Template 2')
+        self.assertEqual(prompt, 'Template 1\nTemplate 2')
         
         
     def test_n_args_0(self):
