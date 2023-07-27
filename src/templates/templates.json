@@ -30,6 +30,12 @@
                         "n_args": 2
                         },
 
+    "conversation_caption_generation":
+                        {
+                            "template": "Generate a conversation caption. The setting :{}. There are 2 participants. Participants are {} and {}. Write 1-2 sentences to explain what is happening. Clearly state who are the participants. Don't generate new lines.",
+                            "n_args": 3
+                        },
+
     "feedback_initiation":{
                             "template": "Feedback initiation {} {}",
                             "n_args": 2
