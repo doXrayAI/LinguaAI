@@ -25,6 +25,10 @@ class PromptBuilderTest(unittest.TestCase):
         self.assertEqual(prompt, 'Template 1 Template 2')
         
         
+    def test_n_args_0(self):
+        b = PromptBuilder()
+        b.add_template("Template with no args", ())
+        
     def test_noniterable_argument(self):
         b = PromptBuilder()
         b.add_template('This isn\'t iterable {}', 11)

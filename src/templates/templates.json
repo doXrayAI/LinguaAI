@@ -1,0 +1,37 @@
+{
+    "setting_user_input_validation": {
+                                        "template": "Does the following describe a situation, place or activity? Respond only with 1 or 0.  {}",
+                                        "n_args": 1
+                                        },
+
+    "role_inference_description":{
+                        "template": "Based on a provided setting description, infere two roles involved in the conversation in the provided setting. Assign a more moderatory role to GPT and the other to user. Format the output as: \n\"setting\": \"SETTING\" \n\"roles\": [\"ROLE1\", \"ROLE2\"] \n\"GPT_role\": \"ROLE\" \n\"user_role\": \"ROLE\" ",
+                        "n_args": 0   
+                    },
+    
+    "role_inference_examples":{
+                        "template": "Examples:\n",
+                        "n_args": 0,   
+                        "choices": [
+                            "setting: A conversation in a cafe in english.\nroles: [waiter, customer]\nGPT_role: waiter\nuser_role: customer\n\n",
+                            "setting: A conversation in a library in german.\nroles:  [student, librarian]\nGPT_role: librarian\nuser_role: student\n\n",
+                            "setting: A conversation with a friend in swedish.\npersons: [friend, me]\nGPT_role: friend\nuser_role: me\n\n",
+                            "setting: A conversation in a police station.\npersons:  [Policeman, me]\nGPT_role: Policeman\nuser_role: me"
+                        ]
+                    },
+    
+    "role_inference_query": {
+                            "template": "setting: {}",
+                            "n_args": 1
+                        },
+
+    "chat_initiation":{
+                        "template": "Chat initiation {} {}",
+                        "n_args": 2
+                        },
+
+    "feedback_initiation":{
+                            "template": "Feedback initiation {} {}",
+                            "n_args": 2
+                        }
+}

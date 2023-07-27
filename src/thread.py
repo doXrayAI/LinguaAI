@@ -2,9 +2,9 @@ from collections import namedtuple
 import openai
 from copy import deepcopy
 
-from .prompt_builder import PromptBuilder
-from .parameters import default_gpt_parameters as gpt
-from .parameters import default_system_prompt
+from prompt_builder import PromptBuilder
+from parameters import default_chat_completion_parameters
+from parameters import default_system_prompt
 
 Message = namedtuple('Message', ['role', 'content'])
 
@@ -14,8 +14,9 @@ def message_mapping(messages):
 
 class Thread:
     
-    def __init__(self, system_prompt=None):
+    def __init__(self, system_prompt=None, params=default_chat_completion_parameters):
         self.__messages = []
+        self.__params = params
 
         system_prompt_message = Message('system', system_prompt if system_prompt else default_system_prompt)
         self.__messages.append(system_prompt_message)
@@ -28,17 +29,16 @@ class Thread:
         
     def send(self) -> Message:
         response = openai.ChatCompletion.create(
-                engine=gpt.engine,
-                model=gpt.model,
+                model=self.__params.model,
                 
                 messages = message_mapping(self.__messages),
                 
-                temperature=gpt.temperature,
-                max_tokens=gpt.max_tokens,
-                top_p=gpt.top_p,
-                frequency_penalty=gpt.frequency_penalty,
-                presence_penalty=gpt.presence_penalty,
-                stop=gpt.stop)
+                temperature=self.__params.temperature,
+                max_tokens=self.__params.max_tokens,
+                top_p=self.__params.top_p,
+                frequency_penalty=self.__params.frequency_penalty,
+                presence_penalty=self.__params.presence_penalty,
+                stop=self.__params.stop)
         
         response_message = Message(response.choices[0].message.role, response.choices[0].message.content)
         self.__messages.append(response_message)
