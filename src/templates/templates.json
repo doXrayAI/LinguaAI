@@ -5,7 +5,7 @@
                                         },
 
     "role_inference_description":{
-                        "template": "Based on a provided setting description, infere two roles involved in the conversation in the provided setting. Assign a more moderatory role to GPT and the other to user. Fully adhere to the output format \"roles\": [\"ROLE1\", \"ROLE2\"],\"GPT_role\": \"ROLE\",\"user_role\": \"ROLE\" ",
+                        "template": "Based on a provided setting description, infere two roles involved in the conversation in the provided setting. Assign a more moderatory role to GPT and the other to user. If one role is mentioned in the description, use it as a GPT_role Fully adhere to the output format \"roles\": [\"ROLE1\", \"ROLE2\"],\"GPT_role\": \"ROLE\",\"user_role\": \"ROLE\" ",
                         "n_args": 0   
                     },
     
@@ -16,7 +16,8 @@
                             "\"setting\": \"A conversation in a cafe in english.\", \"roles\": [\"waiter\", \"customer\"], \"GPT_role\": \"waiter\", \"user_role\": \"customer\"\n",
                             "\"setting\": \"A conversation in a library.\", \"roles\": [\"student\", \"librarian\"], \"GPT_role\": \"librarian\", \"user_role\": \"student\"\n",
                             "\"setting\": \"A conversation with a friend.\", \"roles\": [\"me\", \"friend\"], \"GPT_role\": \"friend\", \"user_role\": \"me\"\n",
-                            "\"setting\": \"In a police station.\", \"roles\": [\"me\", \"policeman\"], \"GPT_role\": \"policeman\", \"user_role\": \"me\"\n"
+                            "\"setting\": \"In a police station.\", \"roles\": [\"me\", \"policeman\"], \"GPT_role\": \"policeman\", \"user_role\": \"me\"\n",
+                            "\"setting\": \"Talking to Albert Einstein about his work.\", \"roles\": [\"young researcher\", \"Albert Einstein\"], \"GPT_role\": \"Albert Einstein\", \"user_role\": \"young researcher\"\n"
                         ]
                     },
     
