@@ -40,5 +40,13 @@
     "feedback_initiation":{
                             "template": "Feedback initiation {} {}",
                             "n_args": 2
-                        }
+                        },
+
+
+    "language_level_refinement_description": {
+                                            "template" : "The teext was written by GPT using {0} CEFR level of proficiency. Refine the text to be on a {0} level: ",
+                                            "n_args" : 1
+                                        }
+
+
 }
