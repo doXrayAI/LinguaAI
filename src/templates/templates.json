@@ -51,7 +51,10 @@
     "role_following_refinement": {
                                     "template": "The text was written by GPT acting as a {0} speaking to {1}. Refine it to sound more like a {0} while keeping the semantics.",
                                     "n_args" : 2
+                                },
+
+    "user_engagement_refinement":{
+                                    "template": "This is a sentence by {0} talking to {1} in a setting described as {2}. Refine the sentence from {0} so it encourages longer and more detailed response from {1}. Keep the level of english used.",
+                                    "n_args": 3
                                 }
-
-
 }
