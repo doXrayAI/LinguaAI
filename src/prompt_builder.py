@@ -21,3 +21,10 @@ class PromptBuilder:
         self.__templates = [] 
         
         
+    def pop(self):
+        
+        if len(self.__templates) > 0:
+            return self.__templates.pop()
+        
+        return None
+        
