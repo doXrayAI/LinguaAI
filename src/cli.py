@@ -1,5 +1,6 @@
 from input_validation_bot import InputValidationBot
 from role_inference_bot import RoleInferenceBot
+from caption_bot import CaptionBot
 
 def chat_initiation():
         
@@ -22,12 +23,13 @@ def chat_initiation():
     print(roles)
         
     # TODO generate setting caption
+    caption_bot = CaptionBot()
+    caption = caption_bot.generate(setting_description, roles['GPT_role'], roles['user_role'])
+    
+    print(caption)
     
     # TODO create bot pipeline, add chat thread and auxiliary threads to it
     
     # TODO conversation
     
     
-    
-    
-chat_initiation()
