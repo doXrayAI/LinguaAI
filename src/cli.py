@@ -2,6 +2,7 @@ from src.bots.input_validation_bot import InputValidationBot
 from src.bots.role_inference_bot import RoleInferenceBot
 from src.bots.caption_bot import CaptionBot
 from src.bots.refinement_bot import *
+from src.bot_pipeline import make_bot_pipeline
 
 def chat_initiation():
         
@@ -35,7 +36,9 @@ def chat_initiation():
     bot_list = [RoleFollowingBot(roles['GPT_role'], roles['user_role']), LanguageLevelRefinementBot('A2'), UserEngagementBot(roles['GPT_role'], roles['user_role'], roles['setting']) ]
     
     
+    pipeline = make_bot_pipeline([b.send for b in bot_list])
     
+    print(pipeline('I will be right back with your order.'))
     
     # TODO conversation bot
     

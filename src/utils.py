@@ -5,6 +5,8 @@ cefr_descriptions = dict()
 
 def load_template(template_name: str, fname='./src/templates/templates.json'):
     
+    global prompt_templates
+    
     if not prompt_templates:
         
         with open(fname) as f:
@@ -19,11 +21,13 @@ def load_template(template_name: str, fname='./src/templates/templates.json'):
     
 def load_cefr(level: str, fname='./src/templates/language_levels_cefr.json'):
     
+    global cefr_descriptions
+    
     if not cefr_descriptions:
         with open(fname) as f:
             cefr_descriptions = json.load(f)
         
-    if cefr_descriptions not in cefr_descriptions:
+    if not cefr_descriptions:
         raise ValueError(level + " is not a valid CEFR level")
 
     return cefr_descriptions[level]
