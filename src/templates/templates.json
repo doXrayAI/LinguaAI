@@ -44,8 +44,8 @@
 
 
     "language_level_refinement": {
-                                    "template" : "The text was written by GPT using {0} CEFR level of proficiency. Refine the text to be on a {0} level: ",
-                                    "n_args" : 1
+                                    "template" : "The text was written by GPT using {0} CEFR level of proficiency. {0} level is defined as {1}. Refine the text to be on a {0} level: ",
+                                    "n_args" : 2
                                 },
 
     "role_following_refinement": {

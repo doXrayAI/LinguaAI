@@ -1,5 +1,5 @@
 from bot import Bot
-from utils import load_template
+from utils import load_template, load_cefr
 
 
 class LanguageLevelRefinementBot(Bot):
@@ -8,7 +8,8 @@ class LanguageLevelRefinementBot(Bot):
         super().__init__()
         self.__template = dict()
         self.__template = load_template('language_level_refinement')
-        self._prompt_builder.add_template(self.__template['template'], (language_level,))
+        language_level_description = load_cefr(language_level)
+        self._prompt_builder.add_template(self.__template['template'], (language_level, language_level_description))
         
         
     def send(self, input) :
