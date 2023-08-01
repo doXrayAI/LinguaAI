@@ -1,6 +1,6 @@
-from input_validation_bot import InputValidationBot
-from role_inference_bot import RoleInferenceBot
-from caption_bot import CaptionBot
+from src.bots.input_validation_bot import InputValidationBot
+from src.bots.role_inference_bot import RoleInferenceBot
+from src.bots.caption_bot import CaptionBot
 
 def chat_initiation():
         
@@ -13,18 +13,18 @@ def chat_initiation():
     while not valid_input:
         setting_description =  input('Setting description: ')
         
-        valid_input = validation_bot.validate(setting_description)
+        valid_input = validation_bot.send((setting_description,))
         
         if not valid_input:
             print('Invalid input')
         
-    roles = role_inference_bot.infere(setting_description)
+    roles = role_inference_bot.send((setting_description,))
     
     print(roles)
         
     # TODO generate setting caption
     caption_bot = CaptionBot()
-    caption = caption_bot.generate(setting_description, roles['GPT_role'], roles['user_role'])
+    caption = caption_bot.send((setting_description, roles['GPT_role'], roles['user_role']))
     
     print(caption)
     
