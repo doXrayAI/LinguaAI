@@ -1,6 +1,7 @@
 from src.bots.input_validation_bot import InputValidationBot
 from src.bots.role_inference_bot import RoleInferenceBot
 from src.bots.caption_bot import CaptionBot
+from src.bots.refinement_bot import RoleFollowingBot, LanguageLevelRefinementBot
 
 def chat_initiation():
         
@@ -28,7 +29,11 @@ def chat_initiation():
     
     print(caption)
     
+    
+    
     # TODO create bot pipeline, add chat thread and auxiliary threads to it
+    bot_list = [RoleFollowingBot(roles['GPT_role'], roles['user_role']), LanguageLevelRefinementBot('A2')]
+    
     
     # TODO conversation
     

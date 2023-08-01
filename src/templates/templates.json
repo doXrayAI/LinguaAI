@@ -43,10 +43,15 @@
                         },
 
 
-    "language_level_refinement_description": {
-                                            "template" : "The teext was written by GPT using {0} CEFR level of proficiency. Refine the text to be on a {0} level: ",
-                                            "n_args" : 1
-                                        }
+    "language_level_refinement": {
+                                    "template" : "The text was written by GPT using {0} CEFR level of proficiency. Refine the text to be on a {0} level: ",
+                                    "n_args" : 1
+                                },
+
+    "role_following_refinement": {
+                                    "template": "The text was written by GPT acting as a {0} speaking to {1}. Refine it to sound more like a {0} while keeping the semantics.",
+                                    "n_args" : 2
+                                }
 
 
 }
