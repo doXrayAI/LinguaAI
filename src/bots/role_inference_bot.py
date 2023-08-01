@@ -15,11 +15,11 @@ class RoleInferenceBot(Bot):
         self.__template['examples'] = load_template('role_inference_examples')
         self.__template['query'] = load_template('role_inference_query')
         
-        self._prompt_builder.add_template(self.__template['description']['template'], ())
-        self._prompt_builder.add_template(self.__template['examples']['template'], ())
-        self._prompt_builder.add_template(self.__template['examples']['choices'][1], ())
-        self._prompt_builder.add_template(self.__template['examples']['choices'][3], ())
-        self._prompt_builder.add_template(self.__template['examples']['choices'][4], ())
+        self._prompt_builder.add_template(self.__template['description']['template'])
+        self._prompt_builder.add_template(self.__template['examples']['template'])
+        self._prompt_builder.add_template(self.__template['examples']['choices'][1])
+        self._prompt_builder.add_template(self.__template['examples']['choices'][3])
+        self._prompt_builder.add_template(self.__template['examples']['choices'][4])
         
         
         
@@ -42,5 +42,5 @@ class RoleInferenceBot(Bot):
             return roles
         
         except json.decoder.JSONDecodeError:
-            print(result)
+            print('Cannot decode roles: ' + result)
             return None

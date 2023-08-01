@@ -9,7 +9,7 @@ class PromptBuilder:
     def __init__(self):
         self.__templates = []
     
-    def add_template(self, input: str, args: tuple):
+    def add_template(self, input: str, args: tuple=()):
         self.__templates.append( UnformattedString(input, args))
         return self
         
