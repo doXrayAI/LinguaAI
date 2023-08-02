@@ -26,9 +26,9 @@
                             "n_args": 1
                         },
 
-    "chat_initiation":{
-                        "template": "Chat initiation {} {}",
-                        "n_args": 2
+    "chat_bot_initiation":{
+                        "template": "{0}. The user is a {2}. Act as if you were {3}. Initiate a conversation as {3} in {1}. Generate one conversation line. You can only speak {1} on level {4}. {4} is defined as {5}. Start the response with: {3}: ...",
+                        "n_args": 6
                         },
 
     "conversation_caption_generation":

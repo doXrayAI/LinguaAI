@@ -25,7 +25,12 @@ class Thread:
     def add_user_prompt(self, prompt: str):
         self.__messages.append(Message('user', prompt))
         return self
-        
+    
+    
+    def add_assistant_prompt(self, prompt: str):
+        self.__messages.append(Message('assistant', prompt))
+        return self
+    
         
     def send(self) -> Message:
         response = openai.ChatCompletion.create(
@@ -43,9 +48,6 @@ class Thread:
         response_message = Message(response.choices[0].message.role, response.choices[0].message.content)
         return response_message
     
-    def add_assistant_prompt(self, prompt: str):
-        self.__messages.append(Message('assistant', prompt))
-        return self
     
     def get_messages(self):
         return deepcopy(self.__messages)
