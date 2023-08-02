@@ -3,6 +3,7 @@ from bot import Bot
 
 
 class InputValidationBot(Bot):
+    '''Bot performing setting input validation.'''
     
     def __init__(self) -> None:
         super().__init__()

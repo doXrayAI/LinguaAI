@@ -5,7 +5,7 @@ from bot import Bot
 
 
 class CaptionBot(Bot):
-    
+    '''Bot generating a caption based on the setting and roles'''
     def __init__(self) -> None:
         super().__init__()
         self.__template = load_template('conversation_caption_generation')

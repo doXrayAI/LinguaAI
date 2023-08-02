@@ -7,6 +7,7 @@ import json
 
 
 class RoleInferenceBot(Bot):
+    '''Bot infering roles based on a given setting.'''
 
     def __init__(self) -> None:
         super().__init__()

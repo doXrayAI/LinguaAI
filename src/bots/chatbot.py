@@ -3,6 +3,7 @@ from thread import Thread
 from utils import load_template, load_cefr
 
 class ChatBot(Bot):
+    '''A generic chatbot'''
     
     def __init__(self, setting_description, GPT_role, user_role, language='english', language_level='A1') -> None:
         super().__init__(thread=Thread())
@@ -22,6 +23,7 @@ class ChatBot(Bot):
         
         
     def add_message(self, message, role= 'user'):
+        '''Adds message into the thread'''
         if role == 'user':
             self._thread.add_user_prompt(message)
         else:
