@@ -1,0 +1,56 @@
+PROMPT TEMPLATE: '{0}. The user is a {2}. Act as if you were {3}. Initiate a conversation as {3} in {1}. Generate one conversation line. You can only speak {1} on level {4}. {4} is defined as {5}. Start the response with: {3}: ...'
+
+LANGUAGE LEVEL: C1
+
+Prompt:  In a cafe. The user is a customer. Act as if you were waiter. Initiate a conversation as waiter in English. Generate one conversation line. You can only speak English on level C2. C2 is defined as Advanced - Can understand with ease virtually everything heard or read. Can summarise information from different spoken and written sources, reconstructing arguments and accounts in a coherent presentation. Can express him/herself spontaneously, very fluently and precisely, differentiating finer shades of meaning even in more complex situations.. Start the response with: waiter: ...
+   Temp:  0.1   Result:  waiter: Good afternoon! Welcome to our cafe. How may I assist you today?
+   Temp:  0.3   Result:  waiter: Good afternoon! Welcome to our cafe. How may I assist you today?
+   Temp:  0.6   Result:  waiter: Good afternoon! Welcome to our cafe. How may I assist you today?
+   Temp:  0.7   Result:  waiter: Good afternoon! Welcome to our cafe. Are you ready to order or would you like some time to look at the menu?
+   Temp:  0.95   Result:  waiter: Good afternoon! Welcome to our cafe. How may I assist you today?
+
+
+Prompt:  Enchanted forest. The user is a explorer. Act as if you were forest spirit. Initiate a conversation as forest spirit in English. Generate one conversation line. You can only speak English on level C2. C2 is defined as Advanced - Can understand with ease virtually everything heard or read. Can summarise information from different spoken and written sources, reconstructing arguments and accounts in a coherent presentation. Can express him/herself spontaneously, very fluently and precisely, differentiating finer shades of meaning even in more complex situations.. Start the response with: forest spirit: ...
+   Temp:  0.1   Result:  forest spirit: Ah, weary traveler, welcome to my enchanted forest. What brings you to this mystical realm today?
+   Temp:  0.3   Result:  forest spirit: Ah, weary traveler, welcome to the enchanted forest! What brings you to this mystical realm today?
+   Temp:  0.6   Result:  forest spirit: Greetings, brave explorer! I sense your curiosity as you venture into my enchanted forest. What mysteries do you seek to uncover today?
+   Temp:  0.7   Result:  forest spirit: Greetings, intrepid explorer of the enchanted forest. What brings you to this mystical realm of nature's wonders?
+   Temp:  0.95   Result:  forest spirit: Greetings, wanderer of the enchanted forest. What brings you to this mystical realm of nature and magic?
+
+
+Prompt:  Talking to Yann LeCun on a conference afterparty. The user is a conference attendee. Act as if you were Yann LeCun. Initiate a conversation as Yann LeCun in English. Generate one conversation line. You can only speak English on level C2. C2 is defined as Advanced - Can understand with ease virtually everything heard or read. Can summarise information from different spoken and written sources, reconstructing arguments and accounts in a coherent presentation. Can express him/herself spontaneously, very fluently and precisely, differentiating finer shades of meaning even in more complex situations.. Start the response with: Yann LeCun: ...
+   Temp:  0.1   Result:  Yann LeCun: Hello there! It's great to meet you at this conference afterparty. How are you enjoying the event so far?
+   Temp:  0.3   Result:  Yann LeCun: Hello there! It's great to meet you at this conference afterparty. How are you enjoying the event so far?
+   Temp:  0.6   Result:  Yann LeCun: Hello there! I hope you're enjoying the conference. Is there anything specific you'd like to discuss or any questions you have about artificial intelligence or machine learning?
+   Temp:  0.7   Result:  Yann LeCun: Hello there! It's great to meet you at this conference afterparty. How are you enjoying the event so far?
+   Temp:  0.95   Result:  Yann LeCun: Hello, it's great to meet you here at the conference afterparty! How are you enjoying the event so far?
+
+
+
+
+LANGUAGE LEVEL: A2
+
+
+Prompt:  In a cafe. The user is a customer. Act as if you were waiter. Initiate a conversation as waiter in English. Generate one conversation line. You can only speak English on level A2. A2 is defined as Basic - Can understand sentences and frequently used expressions related to areas of most immediate relevance (e.g. very basic personal and family information, shopping, local geography, employment). Can communicate in simple and routine tasks requiring a simple and direct exchange of information on familiar and routine matters.  Can describe in simple terms aspects of his/her background, immediate environment and matters in areas of immediate need.. Start the response with: waiter: ...
+   Temp:  0.1   Result:  waiter: Good morning! How can I assist you today?
+   Temp:  0.3   Result:  waiter: Good afternoon! How can I assist you today?
+   Temp:  0.6   Result:  waiter: Good afternoon! How can I assist you today?
+   Temp:  0.7   Result:  waiter: Good afternoon! How can I assist you today?
+   Temp:  0.95   Result:  waiter: Good morning! Welcome to our cafe. How may I assist you today?
+
+
+Prompt:  Enchanted forest. The user is a explorer. Act as if you were forest spirit. Initiate a conversation as forest spirit in English. Generate one conversation line. You can only speak English on level A2. A2 is defined as Basic - Can understand sentences and frequently used expressions related to areas of most immediate relevance (e.g. very basic personal and family information, shopping, local geography, employment). Can communicate in simple and routine tasks requiring a simple and direct exchange of information on familiar and routine matters.  Can describe in simple terms aspects of his/her background, immediate environment and matters in areas of immediate need.. Start the response with: forest spirit: ...
+   Temp:  0.1   Result:  forest spirit: Welcome, brave explorer, to the enchanted forest. What brings you to this mystical realm?
+   Temp:  0.3   Result:  forest spirit: Welcome, brave explorer, to the enchanted forest. What brings you to this mystical realm?
+   Temp:  0.6   Result:  forest spirit: Welcome, brave explorer, to the enchanted forest. What brings you to this mystical realm?
+   Temp:  0.7   Result:  forest spirit: Greetings, brave explorer! What brings you to the enchanted forest today?
+   Temp:  0.95   Result:  forest spirit: Ah, weary traveler, you have found your way into my enchanted realm. What brings you to the heart of this mystical forest?
+
+
+Prompt:  Talking to Yann LeCun on a conference afterparty. The user is a conference attendee. Act as if you were Yann LeCun. Initiate a conversation as Yann LeCun in English. Generate one conversation line. You can only speak English on level A2. A2 is defined as Basic - Can understand sentences and frequently used expressions related to areas of most immediate relevance (e.g. very basic personal and family information, shopping, local geography, employment). Can communicate in simple and routine tasks requiring a simple and direct exchange of information on familiar and routine matters.  Can describe in simple terms aspects of his/her background, immediate environment and matters in areas of immediate need.. Start the response with: Yann LeCun: ...
+   Temp:  0.1   Result:  Yann LeCun: Hello there! I hope you're enjoying the conference. Is there anything specific you'd like to discuss or any questions you have about my work in artificial intelligence?
+   Temp:  0.3   Result:  Yann LeCun: Hello there! How are you enjoying the conference so far?
+   Temp:  0.6   Result:  Yann LeCun: Hello there! How are you enjoying the conference so far?
+   Temp:  0.7   Result:  Yann LeCun: Hi there! It's great to meet you at this conference afterparty. What brings you here tonight?
+   Temp:  0.95   Result:  Yann LeCun: Hello there! It's great to meet you at this conference. How has your experience been so far?
+

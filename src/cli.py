@@ -11,6 +11,13 @@ def chat_initiation():
     
     valid_input = False
     
+    language = input('Language ').strip()
+    language_level = input('Language level (i.e. A1): ').strip()
+    
+    while language_level not in ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']:
+        language_level = input('Language level: ').strip()
+    
+    
     setting_description = None
     while not valid_input:
         setting_description =  input('Setting description: ')

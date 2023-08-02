@@ -41,12 +41,15 @@ class Thread:
                 stop=self.__params.stop)
         
         response_message = Message(response.choices[0].message.role, response.choices[0].message.content)
-        self.__messages.append(response_message)
-        
         return response_message
     
+    def add_assistant_prompt(self, prompt: str):
+        self.__messages.append(Message('assistant', prompt))
+        return self
     
     def get_messages(self):
         return deepcopy(self.__messages)
-        
+    
+    def pop(self):
+        return self.__messages.pop()
     
