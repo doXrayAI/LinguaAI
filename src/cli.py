@@ -1,8 +1,10 @@
 from src.bots.input_validation_bot import InputValidationBot
 from src.bots.role_inference_bot import RoleInferenceBot
 from src.bots.caption_bot import CaptionBot
+from src.bots.chat_bot import ChatBot
 from src.bots.refinement_bot import *
 from src.bot_pipeline import make_bot_pipeline
+from src.bot_operator import ChatBotOperator
 
 def chat_initiation():
         
@@ -31,22 +33,33 @@ def chat_initiation():
     
     print(roles)
         
-    # TODO generate setting caption
     caption_bot = CaptionBot()
     caption = caption_bot.send((setting_description, roles['GPT_role'], roles['user_role']))
     
     print(caption)
     
     
-    
-    # TODO create bot pipeline, add chat thread and auxiliary threads to it
-    bot_list = [RoleFollowingBot(roles['GPT_role'], roles['user_role']), LanguageLevelRefinementBot('A2'), UserEngagementBot(roles['GPT_role'], roles['user_role'], roles['setting']) ]
-    
-    
+    bot_list = [RoleFollowingBot(roles['GPT_role'], roles['user_role']), UserEngagementBot(roles['GPT_role'], roles['user_role'], roles['setting']), LanguageLevelRefinementBot(language_level) ]    
     pipeline = make_bot_pipeline([b.send for b in bot_list])
     
-    print(pipeline('I will be right back with your order.'))
+    # Initialize chat bot
+    chat_bot = ChatBot(roles['setting'], roles['GPT_role'], roles['user_role'], language, language_level)
     
-    # TODO conversation bot
+    # Initialize chatbot operator
+    
+    operator = ChatBotOperator(chat_bot, pipeline)
+    
+    chatbot_message = operator.chatbot_setup()
+    print(chatbot_message)
+    
+    while 1:
+        m = input(roles['user_role'] + ': ')
+        
+        m = roles['user_role'] + ': ' + m
+
+        gpt_response = operator.send_message(m)
+        
+        print(gpt_response)
+    
     
     
