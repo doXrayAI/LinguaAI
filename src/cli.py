@@ -45,6 +45,7 @@ def chat_initiation():
     # Initialize chat bot
     chat_bot = ChatBot(roles['setting'], roles['GPT_role'], roles['user_role'], language, language_level)
     
+    
     # Initialize chatbot operator
     
     operator = ChatBotOperator(chat_bot, pipeline)

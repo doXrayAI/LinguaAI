@@ -12,14 +12,15 @@ class LanguageLevelRefinementBot(Bot):
         self._prompt_builder.add_template(self.__template['template'], (language_level, language_level_description))
         
         
-    def send(self, input) :
+    def send(self, input, history) :
         
         self._prompt_builder.add_template(input)
         prompt = self._prompt_builder.build()
         self._prompt_builder.pop()
         
         refinement = self._thread.send(prompt)
-        return refinement
+        history.append(refinement)
+        return refinement, history
     
     
     
@@ -32,14 +33,15 @@ class RoleFollowingBot(Bot):
         self._prompt_builder.add_template(self.__template['template'], (GPT_role, user_role))
         
         
-    def send(self, input) :
+    def send(self, input, history) :
         
         self._prompt_builder.add_template(input)
         prompt = self._prompt_builder.build()
         self._prompt_builder.pop()
         
         refinement = self._thread.send(prompt)
-        return refinement
+        history.append(refinement)
+        return refinement, history
     
     
     
@@ -53,11 +55,12 @@ class UserEngagementBot(Bot):
         self._prompt_builder.add_template(self.__template['template'], (GPT_role, user_role, setting))
         
         
-    def send(self, input) :
+    def send(self, input, history) :
         
         self._prompt_builder.add_template(input)
         prompt = self._prompt_builder.build()
         self._prompt_builder.pop()
         
         refinement = self._thread.send(prompt)
-        return refinement
+        history.append(refinement)
+        return refinement, history

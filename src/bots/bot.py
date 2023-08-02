@@ -10,5 +10,5 @@ class Bot(ABC):
         self._thread = thread
         
     @abstractmethod
-    def send(self, args):
+    def send(self, args, history):
         pass
