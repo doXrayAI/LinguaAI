@@ -49,7 +49,7 @@
                                 },
 
     "role_following_refinement": {
-                                    "template": "The text was written by GPT acting as a {0} speaking to {1}. Refine it to sound more like a {0} while keeping the semantics.",
+                                    "template": "You are a {0}. You are speaking to {1}. Make minimal changes to the tone and voice of the provided sentence to sound more like {0}. ",
                                     "n_args" : 2
                                 },
 
