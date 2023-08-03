@@ -35,6 +35,7 @@ class TestThread(unittest.TestCase):
         
         response = t.send()
         self.assertEqual(response.role, 'assistant')
+        t.add_assistant_prompt(response.content)
         
         messages = t.get_messages()
         self.assertEqual(messages[2].role, 'assistant')
