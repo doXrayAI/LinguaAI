@@ -39,7 +39,9 @@ def chat_initiation():
     print(caption)
     
     
-    bot_list = [RoleFollowingBot(roles['GPT_role'], roles['user_role']), UserEngagementBot(roles['GPT_role'], roles['user_role'], roles['setting']), LanguageLevelRefinementBot(language_level) ]    
+    #bot_list = [RoleFollowingBot(roles['GPT_role'], roles['user_role']), UserEngagementBot(roles['GPT_role'], roles['user_role'], roles['setting']), LanguageLevelRefinementBot(language_level) ]    
+    
+    bot_list = [RoleFollowingBot(roles['GPT_role'], roles['user_role']), LanguageLevelRefinementBot(language_level) ]    
     pipeline = make_bot_pipeline([b.send for b in bot_list])
     
     # Initialize chat bot
