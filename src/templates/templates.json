@@ -5,7 +5,7 @@
                                         },
 
     "role_inference_description":{
-                        "template": "Based on a provided setting description, infere two roles involved in the conversation in the provided setting. Assign a more moderatory role to GPT and the other to user. If one role is mentioned in the description, use it as a GPT_role Fully adhere to the output format \"roles\": [\"ROLE1\", \"ROLE2\"],\"GPT_role\": \"ROLE\",\"user_role\": \"ROLE\" ",
+                        "template": "Based on a provided setting description, think of two roles involved in the conversation in said setting. Assign a more moderatory role to GPT and the other to user. Format the output as \"setting\":\"SETTING\",\"roles\": [\"ROLE1\", \"ROLE2\"],\"GPT_role\": \"ROLE\",\"user_role\": \"ROLE\" ",
                         "n_args": 0   
                     },
     
