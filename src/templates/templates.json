@@ -27,8 +27,8 @@
                         },
 
     "chat_bot_initiation":{
-                        "template": "{0}. The user is a {2}. Act as if you were {3}. Initiate a conversation as {3} in {1}. Generate one conversation line. You can only speak {1} on level {4}. {4} is defined as {5}. Start the response with: {3}: ...",
-                        "n_args": 6
+                        "template": "{0}. The user is a {2}. Act as if you were {3}. Initiate a conversation as {3} in {1}. Keep up the conversation as long as possible with additional suggestions, questions and ideas. You can only speak {1} on level {4}. {4} is defined as {5}. Generate one conversation line. Start the response with: {3}: ...",
+                        "n_args" : 6
                         },
 
     "conversation_caption_generation":
@@ -56,5 +56,10 @@
     "user_engagement_refinement":{
                                     "template": "I will give you a text by {0} talking to {1} in a setting described as  \"{2}\". Make minimal changes to the text from {0} so it encourages longer and more detailed response from {1}. Keep the level of language proficiency used. Do not change the text length. \n\nExample: This building is so cool.\nRefinement: This is such an amazing building, I think it's Vienna Secession style.\nExample: ",
                                     "n_args": 3
+                                },
+
+    "role_fitness_language_level_refinement": {
+                                    "template": "Rephrase the sentence with 2 goals: 1. The sentence should only use {2} level of language proficiency, defined as {3}.  2. The sentence should use tone and voice of {0} speaking to {1}.\nExamples:\n\nSentence:I can't give you that drink because we don't have it.\nTask: The sentence should use tone and voice of a waiter talking to a customer.\nThought: Does it fit the role of a waiter? If not, rephrase it to fit the role.\nTask:The sentence should only use C2 level of language.\nIs this C2 level of language? If not, rephrase it to be C2 level.\nRefinement:I am very sorry, but we do not serve that drink, would you fancy a cocktail instead? Our bartenders make exquisit cocktails.\n\nSentence:Mother, I wish to go home.\nTask:The sentence should use tone and voice of a child speaking to its mother.\nThought: Does it match the role of a small child? If not rephrase it to match the role.\nTask:The sentence should only use A2 level of language proficiency.\nThought: Is the sentence on A2 level of language? If not, rephrase it to be A2.\nRefinement:Mommy, I wanna go homee!.\n\n Return ONLY refinement.\n\nSentence:",                                    
+                                    "n_args" : 4
                                 }
 }

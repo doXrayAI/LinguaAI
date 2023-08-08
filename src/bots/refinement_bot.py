@@ -70,3 +70,28 @@ class UserEngagementBot(Bot):
         refinement = self._thread.send(prompt)
         history.append(refinement)
         return refinement, history
+    
+    
+    
+class RoleFitnessLanguageLevelBot(Bot):
+    
+    def __init__(self, GPT_role, user_role, language_level):
+        super().__init__()
+        self.__template = dict()
+        self.__template = load_template('role_fitness_language_level_refinement')
+        
+        cefr_description = load_cefr(language_level)
+        self._prompt_builder.add_template(self.__template['template'], (language_level, cefr_description, GPT_role, user_role))
+        
+        
+    def send(self, args, history) :
+        '''Accepts the input string as args, stores refinement to history and returns the refinement.'''
+
+        self._prompt_builder.add_template(args)
+        prompt = self._prompt_builder.build()
+        self._prompt_builder.pop()
+        
+        refinement = self._thread.send(prompt)
+        history.append(refinement)
+        return refinement, history
+    
