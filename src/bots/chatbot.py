@@ -28,3 +28,7 @@ class ChatBot(Bot):
             self._thread.add_user_prompt(message)
         else:
             self._thread.add_assistant_prompt(message)
+            
+            
+    def get_chat(self):
+        return self._thread.get_messages()

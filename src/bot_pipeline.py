@@ -5,3 +5,6 @@ def make_bot_pipeline(bot_function_list):
     and returning 2 arguments into a pipeline'''
     return reduce(lambda f, g: lambda x, y: g(*f(x, y)), bot_function_list)
 
+
+
+identity_pipeline = make_bot_pipeline([lambda x,y: (x,y)])
