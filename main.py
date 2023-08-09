@@ -18,12 +18,12 @@ if __name__ == "__main__":
     ll_bot = LanguageLevelRefinementBot(language_level)
     rf_ll_bot = RoleFitnessLanguageLevelBot(example['GPT_role'], example['user_role'], language_level)
     
-    #pipeline = identity_pipeline
-    pipeline = make_bot_pipeline([rf_ll_bot.send,])
+    pipeline = identity_pipeline
+    #pipeline = make_bot_pipeline([rf_ll_bot.send,])
     
-    chat = bot_play.play(example['setting'], example['GPT_role'], example['user_role'], language, language_level, pipeline, 10)
+    chat = bot_play.play(example['setting'], example['GPT_role'], example['user_role'], language, language_level, pipeline, 5)
     
     for c in chat:
-        print(c.content)
+        print(c['content'])
         print()
     

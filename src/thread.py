@@ -6,12 +6,9 @@ from prompt_builder import PromptBuilder
 from parameters import default_parameters
 from parameters import default_system_prompt
 
-Message = namedtuple('Message', ['role', 'content'])
 
 
-def message_mapping(messages):
-    '''Maps a list of Messages to a list of dictionaries.'''
-    return list(map(lambda m: {'role': m.role, 'content': m.content}, messages)) 
+
 
 
 class Thread:
@@ -22,28 +19,28 @@ class Thread:
         self.__messages = []
         self.__params = params
 
-        system_prompt_message = Message('system', system_prompt)
+        system_prompt_message = {'role': 'system', 'content': system_prompt}
         self.__messages.append(system_prompt_message)
     
     
     def add_user_prompt(self, prompt: str):
         '''Adding user prompt to the message list.'''
-        self.__messages.append(Message('user', prompt))
+        self.__messages.append({'role':'user', 'content': prompt})
         return self
     
     
     def add_assistant_prompt(self, prompt: str):
         '''Adding user prompt to the message list.'''
-        self.__messages.append(Message('assistant', prompt))
+        self.__messages.append({'role':'assistant', 'content': prompt})
         return self
     
         
-    def send(self) -> Message:
+    def send(self) -> dict:
         '''Calls GPT API with stored messages. Returns the API response.'''
         
         response = openai.ChatCompletion.create(
                 model=self.__params.model,
-                messages = message_mapping(self.__messages),
+                messages = self.__messages,
                 temperature=self.__params.temperature,
                 max_tokens=self.__params.max_tokens,
                 top_p=self.__params.top_p,
@@ -51,7 +48,7 @@ class Thread:
                 presence_penalty=self.__params.presence_penalty,
                 stop=self.__params.stop)
         
-        response_message = Message(response.choices[0].message.role, response.choices[0].message.content)
+        response_message = {'role': response.choices[0].message.role, 'content': response.choices[0].message.content}
         return response_message
     
     

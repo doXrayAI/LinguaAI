@@ -18,7 +18,7 @@ class ChatBotOperator:
             response = self.__chatbot.send()
         
         # Add the refined GPT response to the list
-        refined_response, history = self.__refinement_pipeline(response.content, [response.content,])
+        refined_response, history = self.__refinement_pipeline(response['content'], [response['content'],])
         
         self.__chatbot.add_message(refined_response, role='assistant')
         
@@ -32,7 +32,7 @@ class ChatBotOperator:
         
         response = self.__chatbot.send()
         
-        refined_response, history = self.__refinement_pipeline(response.content, [response.content,])
+        refined_response, history = self.__refinement_pipeline(response['content'], [response['content'],])
                 
         self.__chatbot.add_message(refined_response, role='assistant')
         
