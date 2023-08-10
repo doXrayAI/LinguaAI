@@ -81,7 +81,7 @@ class RoleFitnessLanguageLevelBot(Bot):
         self.__template = load_template('role_fitness_language_level_refinement')
         
         cefr_description = load_cefr(language_level)
-        self._prompt_builder.add_template(self.__template['template'], ( GPT_role, user_role, language_level, cefr_description))
+        self._prompt_builder.add_template(self.__template['template'], ( language_level, cefr_description, GPT_role, user_role))
         
         
     def send(self, args, history) :
