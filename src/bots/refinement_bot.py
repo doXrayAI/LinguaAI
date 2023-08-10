@@ -29,11 +29,11 @@ class LanguageLevelRefinementBot(Bot):
 class RoleFollowingBot(Bot):
     '''Refining the input to match the GPT and user role'''
     
-    def __init__(self, GPT_role, user_role):
+    def __init__(self, GPT_role, user_role, setting):
         super().__init__()
         self.__template = dict()
         self.__template = load_template('role_following_refinement')
-        self._prompt_builder.add_template(self.__template['template'], (GPT_role, user_role))
+        self._prompt_builder.add_template(self.__template['template'], (GPT_role, user_role, setting))
         
         
     def send(self, args, history) :
@@ -81,7 +81,7 @@ class RoleFitnessLanguageLevelBot(Bot):
         self.__template = load_template('role_fitness_language_level_refinement')
         
         cefr_description = load_cefr(language_level)
-        self._prompt_builder.add_template(self.__template['template'], (language_level, cefr_description, GPT_role, user_role))
+        self._prompt_builder.add_template(self.__template['template'], ( GPT_role, user_role, language_level, cefr_description))
         
         
     def send(self, args, history) :
