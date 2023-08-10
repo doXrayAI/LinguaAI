@@ -1,17 +1,17 @@
-setting,role_object
-Talking to university professor about the exam.,"{'setting': 'Talking to university professor about the exam.', 'roles': ['student', 'university professor'], 'GPT_role': 'university professor', 'user_role': 'student'}"
-In emergency room of a hospital.,"{'setting': 'In emergency room of a hospital.', 'roles': ['doctor', 'patient'], 'GPT_role': 'doctor', 'user_role': 'patient'}"
-In a library.,"{'setting': 'In a library.', 'roles': ['student', 'librarian'], 'GPT_role': 'librarian', 'user_role': 'student'}"
-"In a library, looking for Lord of the Rings books.","{'setting': 'In a library, looking for Lord of the Rings books.', 'roles': ['library patron', 'librarian'], 'GPT_role': 'librarian', 'user_role': 'library patron'}"
-Buying tickets at the cinema.,"{'setting': 'Buying tickets at the cinema.', 'roles': ['customer', 'ticket seller'], 'GPT_role': 'ticket seller', 'user_role': 'customer'}"
-In a beach bar.,"{'setting': 'In a beach bar.', 'roles': ['bartender', 'customer'], 'GPT_role': 'bartender', 'user_role': 'customer'}"
-On a date with a girl.,"{'setting': 'On a date with a girl.', 'roles': ['man', 'woman'], 'GPT_role': 'man', 'user_role': 'woman'}"
-Taking a tour of the Barcelona Gothic quarter.,"{'setting': 'Taking a tour of the Barcelona Gothic quarter.', 'roles': ['tourist', 'tour guide'], 'GPT_role': 'tour guide', 'user_role': 'tourist'}"
-Buying train tickets.,"{'setting': 'Buying train tickets.', 'roles': ['customer', 'ticket agent'], 'GPT_role': 'ticket agent', 'user_role': 'customer'}"
-Asking for direction in an unknown city.,"{'setting': 'Asking for direction in an unknown city.', 'roles': ['tourist', 'local resident'], 'GPT_role': 'local resident', 'user_role': 'tourist'}"
-Playing board games with friends.,"{'setting': 'Playing board games with friends.', 'roles': ['player', 'friend'], 'GPT_role': 'friend', 'user_role': 'player'}"
-In a cafe.,"{'setting': 'In a cafe.', 'roles': ['customer', 'barista'], 'GPT_role': 'barista', 'user_role': 'customer'}"
-In a bank.,"{'setting': 'In a bank.', 'roles': ['customer', 'bank teller'], 'GPT_role': 'bank teller', 'user_role': 'customer'}"
-Talking to a colleague during lunch break.,"{'setting': 'Talking to a colleague during lunch break.', 'roles': ['colleague', 'employee'], 'GPT_role': 'employee', 'user_role': 'colleague'}"
-At the airport managing a delayed flight.,"{'setting': 'At the airport managing a delayed flight.', 'roles': ['airline representative', 'passenger'], 'GPT_role': 'airline representative', 'user_role': 'passenger'}"
-Talking to the speaker at a conference afterparty.,"{'setting': 'Talking to the speaker at a conference afterparty.', 'roles': ['conference attendee', 'speaker'], 'GPT_role': 'speaker', 'user_role': 'conference attendee'}"
+setting;role_object
+Talking to university professor about the exam.;{"setting": "Talking to university professor about the exam.", "roles": ["student", "university professor"], "GPT_role": "university professor", "user_role": "student"}
+In emergency room of a hospital.;{"setting": "In emergency room of a hospital.", "roles": ["doctor", "patient"], "GPT_role": "doctor", "user_role": "patient"}
+In a library.;{"setting": "In a library.", "roles": ["student", "librarian"], "GPT_role": "librarian", "user_role": "student"}
+In a library, looking for Lord of the Rings books.;{"setting": "In a library, looking for Lord of the Rings books.", "roles": ["library patron", "librarian"], "GPT_role": "librarian", "user_role": "library patron"}
+Buying tickets at the cinema.;{"setting": "Buying tickets at the cinema.", "roles": ["customer", "ticket seller"], "GPT_role": "ticket seller", "user_role": "customer"}
+In a beach bar.;{"setting": "In a beach bar.", "roles": ["bartender", "customer"], "GPT_role": "bartender", "user_role": "customer"}
+On a date with a girl.;{"setting": "On a date with a girl.", "roles": ["man", "woman"], "GPT_role": "man", "user_role": "woman"}
+Taking a tour of the Barcelona Gothic quarter.;{"setting": "Taking a tour of the Barcelona Gothic quarter.", "roles": ["tourist", "tour guide"], "GPT_role": "tour guide", "user_role": "tourist"}
+Buying train tickets.;{"setting": "Buying train tickets.", "roles": ["customer", "ticket agent"], "GPT_role": "ticket agent", "user_role": "customer"}
+Asking for direction in an unknown city.;{"setting": "Asking for direction in an unknown city.", "roles": ["tourist", "local resident"], "GPT_role": "local resident", "user_role": "tourist"}
+Playing board games with friends.;{"setting": "Playing board games with friends.", "roles": ["player", "friend"], "GPT_role": "friend", "user_role": "player"}
+In a cafe.;{"setting": "In a cafe.", "roles": ["customer", "barista"], "GPT_role": "barista", "user_role": "customer"}
+In a bank.;{"setting": "In a bank.", "roles": ["customer", "bank teller"], "GPT_role": "bank teller", "user_role": "customer"}
+Talking to a colleague during lunch break.;{"setting": "Talking to a colleague during lunch break.", "roles": ["colleague", "employee"], "GPT_role": "employee", "user_role": "colleague"}
+At the airport managing a delayed flight.;{"setting": "At the airport managing a delayed flight.", "roles": ["airline representative", "passenger"], "GPT_role": "airline representative", "user_role": "passenger"}
+Talking to the speaker at a conference afterparty.;{"setting": "Talking to the speaker at a conference afterparty.", "roles": ["conference attendee", "speaker"], "GPT_role": "speaker", "user_role": "conference attendee"}

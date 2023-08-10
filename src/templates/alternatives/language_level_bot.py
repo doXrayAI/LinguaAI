@@ -1,7 +1,7 @@
 language_level_refinement_alternatives = [
         # Basic instruction
-        # Arguments: language_level, cefr_description
-        "Rephrase the text to be on {0} level of CEFR language proficiency: {1}",
+        # Arguments: language_level
+        "Rephrase the text to be on {0} level of CEFR language proficiency: ",
 
         # Basic instruction with language level description
         # Arguments: language_level, cefr_description

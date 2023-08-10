@@ -29,7 +29,6 @@ class RoleInferenceBot(Bot):
         self._prompt_builder.add_template(self.__template['query']['template'], args)
         
         prompt = self._prompt_builder.build()
-        ###print('PROMPT: ', prompt)
         self._prompt_builder.pop()
         
         result = self._thread.send(prompt).replace('\n', '') 
