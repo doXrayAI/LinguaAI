@@ -55,6 +55,9 @@ class Thread:
     def get_messages(self):
         return deepcopy(self.__messages)
     
+    def get_dialogue_string(self, window=6):
+        dialogue_window = self.__messages[-6:] if len(self.__messages) >= 8 else self.__messages[2:]
+        return '\n'.join(dialogue_window) 
     
     def pop(self):
         '''Removes and returns the last added message from the list.'''

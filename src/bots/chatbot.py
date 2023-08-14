@@ -32,3 +32,7 @@ class ChatBot(Bot):
             
     def get_chat(self):
         return self._thread.get_messages()
+    
+    
+    def get_dialogue_string(self, window=6):
+        return self._thread.get_dialogue_string(window)
