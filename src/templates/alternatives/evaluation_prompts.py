@@ -27,6 +27,7 @@ Next response:
 language_level_prompts = [
     
     # Arguments: language_level, cefr_description, message
+    # Average acc:  0.3666666666666667 Average percentage diff > 1:  0.1388888888888889
     ''' Rate the performance of waiter in the dialogue with respect to language proficiency matching the {0} level. {0} is defined as: {1}
 
 Produce rating on a 1 to 3 scale for a message. Only output "1", "2" or "3". Explanation of the scale:
@@ -39,6 +40,7 @@ Message: "{2}"
     ''',
     
     # Arguments: language_level, cefr_description, message
+    # Average acc:  0.4 Average percentage diff > 1:  0.14999999999999997
     ''' Rate the performance of waiter in the dialogue with respect to language proficiency matching the {0} level. {0} is defined as: {1}
 
 Produce rating on a 1 to 3 scale for a message. First output the rating "1", "2" or "3" and explain your reasoning. Explanation of the scale:
@@ -62,7 +64,34 @@ Produce rating on a 1 to 3 scale for a message. Explanation of the scale:
 Focus on grammar level, vocabulary complexity and sentence complexity. First output the rating "1", "2" or "3" and explain your reasoning.
 
 Message: "{2}"
-    '''
+    ''',
+    
+    
+        # Arguments: language_level, cefr_description, message -> DOESN'T USE CEFR DESCRIPTION
+    ''' Rate the performance of waiter in the dialogue with respect to language proficiency matching the {0} level of CEFR language proficiency.
+
+Produce rating on a 1 to 3 scale for a message. Only output "1", "2" or "3". Explanation of the scale:
+
+1: Poor level match: the sentence proficiency level does not match the {0} description at all. The displayed proficiency level is either much higher or much lower.
+2: Acceptable level match: the sentence proficiency level does not match the {0} description completely. The displayed proficiency level is either a bit higher or a bit lower.
+3: Good level match: the sentence proficiency level matches the {0} description. 
+
+Message: "{2}"
+    ''',
+    
+    
+    # Arguments: language_level, cefr_description_extension, message
+    
+        ''' Rate the performance of waiter in the dialogue with respect to language proficiency matching the {0} level of CEFR language proficiency.
+
+Produce rating on a 1 to 3 scale for a message. Only output "1", "2" or "3". Explanation of the scale:
+
+1: Poor level match: the sentence proficiency level does not match the {0} description at all. The displayed proficiency level is either much higher or much lower.
+2: Acceptable level match: the sentence proficiency level does not match the {0} description completely. The displayed proficiency level is either a bit higher or a bit lower.
+3: Good level match: the sentence proficiency level matches the {0} description. 
+
+Message: "{2}"
+    ''',
 ]
 
 

@@ -25,14 +25,15 @@ class RoleFitnessEvaluationBot:
     
 class LanguageLevelEvaluationBot:
     
-    def __init__(self, prompt_alternative=0):
+    def __init__(self, prompt_alternative=0, level_description_fname='../../templates/language_levels_cefr.json'):
         self.__prompt_builder = PromptBuilder()
         self.__thread = SingleRunThread()
         self.__template = language_level_prompts[0]
+        self.__level_description_fname = level_description_fname
         
     def evaluate(self, language, language_level, message):
         
-        level_description = load_cefr(language_level, '../../templates/language_levels_cefr.json')
+        level_description = load_cefr(language_level, self.__level_description_fname)
         
         self.__prompt_builder.reset()
         self.__prompt_builder.add_template(self.__template, (language, language_level, level_description, message))
