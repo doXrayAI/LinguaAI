@@ -53,6 +53,7 @@ Message: "{2}"
     ''',
     
     # Arguments: language_level, cefr_description, message
+    # Average acc:  0.3388888888888889 Average percentage diff > 1:  0.2
     ''' Rate the performance of waiter in the dialogue with respect to language proficiency matching the {0} level. {0} is defined as: {1}
 
 Produce rating on a 1 to 3 scale for a message. Explanation of the scale:
@@ -68,6 +69,7 @@ Message: "{2}"
     
     
         # Arguments: language_level, cefr_description, message -> DOESN'T USE CEFR DESCRIPTION
+        # Average acc:  0.3222222222222222 Average percentage diff > 1:  0.20555555555555555
     ''' Rate the performance of waiter in the dialogue with respect to language proficiency matching the {0} level of CEFR language proficiency.
 
 Produce rating on a 1 to 3 scale for a message. Only output "1", "2" or "3". Explanation of the scale:
@@ -81,6 +83,7 @@ Message: "{2}"
     
     
     # Arguments: language_level, cefr_description_extension, message
+    # Average acc:  0.31666666666666665 Average percentage diff > 1:  0.19444444444444448
     
         ''' Rate the performance of waiter in the dialogue with respect to language proficiency matching the {0} level of CEFR language proficiency.
 
