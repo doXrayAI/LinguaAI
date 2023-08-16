@@ -12,7 +12,7 @@ settings = pd.read_csv(fname, sep=';')
 settings['role_object'] = settings['role_object'].apply(json.loads)
 
 language = 'English'
-lang_levels = ['C2', ]
+lang_levels = [ 'C1', 'C2']
 
 
 results = pd.DataFrame(columns=['language', 'language_level', 'role_object', 'pipeline', 'chat'])
@@ -20,7 +20,7 @@ results = pd.DataFrame(columns=['language', 'language_level', 'role_object', 'pi
 
 try:
     for ll in lang_levels:
-        sample = settings.sample(n=3)
+        sample = settings.sample(n=2)
         
         for s in sample['role_object']:
             
@@ -30,8 +30,8 @@ try:
                         
 
             # TODO define pipeline description (bot + prompt)
-            prompt = "Rephrase the sentence to match the tone and voice of a {0} speaking to {1} in a setting described as {2}:"
-    
+            prompt = "Act as a {0}. You are speaking to {1}. Make minimal changes to the tone and voice of the provided sentence to sound more like {0}\n Examples:\nWaiter: Hi, what do you want?-> Waiter: Hi, what can I offer you today?\nPoliceman: Lady, what happened here? -> Policeman: Ma'am, could you rpovide more information about the situation?"
+
             pipeline_description = 'RoleFollowingBot(' + prompt + ')'
             #pipeline_description = 'Identity'
 
