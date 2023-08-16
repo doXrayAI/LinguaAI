@@ -37,7 +37,7 @@ class LanguageLevelEvaluationBot:
         
         level_example_string = '\n'.join(language_level_examples[language_level])
         level_antiexample_string = '\n'.join(language_level_antiexamples[language_level])
-        ratings_examples = '\n'.join(language_level_rating_examples[language_level])
+        #ratings_examples = '\n'.join(language_level_rating_examples[language_level])
         ratings_examples_with_reasoning= '\n'.join(language_level_rating_examples_with_reasoning[language_level]) 
         
         self.__prompt_builder.reset()
