@@ -2,7 +2,7 @@ import re
 
 from src.prompt_builder import PromptBuilder
 from src.single_run_thread import SingleRunThread
-from src.templates.alternatives.evaluation_prompts import role_fitness_prompts, language_level_prompts, language_level_examples, language_level_antiexamples, language_level_rating_examples
+from src.templates.alternatives.evaluation_prompts import role_fitness_prompts, language_level_prompts, language_level_examples, language_level_antiexamples, language_level_rating_examples, language_level_rating_examples_with_reasoning
 from src.utils import load_cefr
 
 class RoleFitnessEvaluationBot:
@@ -38,9 +38,10 @@ class LanguageLevelEvaluationBot:
         level_example_string = '\n'.join(language_level_examples[language_level])
         level_antiexample_string = '\n'.join(language_level_antiexamples[language_level])
         ratings_examples = '\n'.join(language_level_rating_examples[language_level])
+        ratings_examples_with_reasoning= '\n'.join(language_level_rating_examples_with_reasoning[language_level]) 
         
         self.__prompt_builder.reset()
-        self.__prompt_builder.add_template(self.__template, (language, language_level, level_description, message, level_example_string, level_antiexample_string, ratings_examples))
+        self.__prompt_builder.add_template(self.__template, (language, language_level, level_description, message, level_example_string, level_antiexample_string, ratings_examples_with_reasoning))
         prompt = self.__prompt_builder.build()
         
         if print_prompt:
