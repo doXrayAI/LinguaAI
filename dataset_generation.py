@@ -12,7 +12,7 @@ settings = pd.read_csv(fname, sep=';')
 settings['role_object'] = settings['role_object'].apply(json.loads)
 
 language = 'English'
-lang_levels = [ 'C1', 'C2']
+lang_levels = [ 'C2']
 
 
 results = pd.DataFrame(columns=['language', 'language_level', 'role_object', 'pipeline', 'chat'])
