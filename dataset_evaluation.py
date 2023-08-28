@@ -1,36 +1,39 @@
 import pandas as pd
 import json
 
-from src.bots.evaluation_bot import LanguageLevelEvaluationBot
+from src.bots.evaluation_bot import LanguageLevelEvaluationBot, RoleFitnessEvaluationBot
 
 
-fname = 'src/plays/language_level/language_level_0.out'
+fname = 'src/plays/language_level_role_fitness/language_level_role_fitness_2.out'
 
-fname_out = 'src/plays/evaluation/language_level_0.out'
+fname_out = 'src/plays/evaluation/ev.out'
 
 df = pd.read_csv(fname, sep=';')
 df['role_object'] = df['role_object'].apply(json.loads)
 df['chat'] = df['chat'].apply(json.loads)
 
 
-evaluator = LanguageLevelEvaluationBot(6, 'src/templates/language_levels_cefr.json')
+#evaluator = LanguageLevelEvaluationBot(6, 'src/templates/language_levels_cefr.json')
+evaluator = RoleFitnessEvaluationBot(2)
 
 ratings_all = []
 
-
-for idx, dialogue in df.iterrows():
-    context = dialogue['role_object']
-    
-    messages_for_evaluation = dialogue['chat'][2::2]
-    
-    ratings = []
-
-    for m in messages_for_evaluation:
-        ratings.append(evaluator.evaluate( dialogue['language'], dialogue['language_level'], m))
+try:
+    for idx, dialogue in df.iloc[5:].iterrows():
+        context = dialogue['role_object']
         
-    ratings_all.append(ratings)
-    print(ratings)
+        ratings = []
+        
+        for i in range(2, len(dialogue['chat']), 2):
+            prev_messages = '\n'.join(a['content'] for a in dialogue['chat'][2:i])
+            message = dialogue['chat'][i]['content']
+            
+            ratings.append(evaluator.evaluate(context['GPT_role'], context['setting'], prev_messages, message))
+            
+        ratings_all.append(ratings)
+        print(ratings)
+
+finally:
     
-    
-df = pd.DataFrame(data=ratings_all, columns=['language_level'])
-df.to_csv(fname=fname_out)
+    df = pd.DataFrame(data=ratings_all, columns=['language_level'])
+    df.to_csv(fname=fname_out)
