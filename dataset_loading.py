@@ -2,7 +2,7 @@ import pandas as pd
 import json
 
 
-fname = 'src/plays/role_fitness/role_fitness_2.out'
+fname = 'src/plays/identity.out'
 
 df = pd.read_csv(fname, sep=';')
 

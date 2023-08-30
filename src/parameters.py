@@ -3,7 +3,8 @@ from collections import namedtuple
 
 GPTParameters = namedtuple('GPTParameters'
                  , [ 'model', 'temperature', 'max_tokens', 'top_p', 'frequency_penalty', 'presence_penalty', 'stop']
-                 , defaults=('gpt-3.5-turbo', 0.7, 800, 0.95, 0, 0, None)
+                 #, defaults=('gpt-3.5-turbo', 0.7, 800, 0.95, 0, 0, None)
+                 , defaults=('gpt-4', 0.7, 800, 0.95, 0, 0, None)
                  )
 
 

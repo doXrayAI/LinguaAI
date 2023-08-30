@@ -4,9 +4,9 @@ import json
 from src.bots.evaluation_bot import LanguageLevelEvaluationBot, RoleFitnessEvaluationBot
 
 
-fname = 'src/plays/language_level_role_fitness/language_level_role_fitness_2.out'
+fname = 'src/plays/gpt-4/identity/identity_pipeline.out'
 
-fname_out = 'src/plays/evaluation/ev.out'
+fname_out = 'src/plays/gpt-4/evaluation/ev.out'
 
 df = pd.read_csv(fname, sep=';')
 df['role_object'] = df['role_object'].apply(json.loads)

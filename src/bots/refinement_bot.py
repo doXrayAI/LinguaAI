@@ -1,6 +1,6 @@
 from bot import Bot
 from utils import load_template, load_cefr
-
+from time import sleep
 
 class LanguageLevelRefinementBot(Bot):
     '''Refining the input to match given language level'''
@@ -38,6 +38,8 @@ class RoleFollowingBot(Bot):
         
     def send(self, args, history) :
         '''Accepts the input string as args, stores refinement to history and returns the refinement.'''
+        
+        sleep(5)
 
         self._prompt_builder.add_template(args)
         prompt = self._prompt_builder.build()
