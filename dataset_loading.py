@@ -2,7 +2,7 @@ import pandas as pd
 import json
 
 
-fname = 'src/plays/identity.out'
+fname = 'src/plays/gpt-4/language_level_role_fitness/ll_rf_aaaaa.out'
 
 df = pd.read_csv(fname, sep=';')
 
@@ -18,6 +18,3 @@ for chat in df['chat'] :
         print('...')
     print('-------------------------------------------------------------')
     print('-------------------------------------------------------------')
-
-    
-    

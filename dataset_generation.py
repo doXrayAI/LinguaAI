@@ -2,7 +2,7 @@ import pandas as pd
 import json
 import time
 
-from src.bots.refinement_bot import RoleFollowingBot
+from src.bots.refinement_bot import RoleFitnessLanguageLevelBot
 from src.bot_pipeline import identity_pipeline, make_bot_pipeline
 from src.plays import play as bot_play
 
@@ -12,7 +12,7 @@ settings = pd.read_csv(fname, sep=';')
 settings['role_object'] = settings['role_object'].apply(json.loads)
 
 language = 'English'
-lang_levels = ['C1', 'C2']
+lang_levels = ['A1', 'A2', 'B1']
 
 
 results = pd.DataFrame(columns=['language', 'language_level', 'role_object', 'pipeline', 'chat'])
@@ -25,28 +25,24 @@ try:
         for s in sample['role_object']:
             
             
-            
             # TODO define bots and pipeline
-            bot = RoleFollowingBot(s['GPT_role'], s['user_role'], s['setting'])
+            prompt_alt = 2 
+            bot = RoleFitnessLanguageLevelBot(s['GPT_role'], s['user_role'], ll, prompt_alt)
             pipeline = make_bot_pipeline([bot.send, ])
             #pipeline = identity_pipeline
                         
-
-            # TODO define pipeline description (bot + prompt)
-
-            prompt_alt = 0
-            pipeline_description = 'RoleFollowing(' + str(prompt_alt) + ')'
-
-            # TODO adjust prompt to alternative in TEMPLATES !!!
-            # TODO make changes in refinement bot
             
-                
+            pipeline_description = 'RoleFitnessLangugeLevel(' + str(prompt_alt) + ')'
+
+            # TODO make changes in refinement bot
+                            
             chat = bot_play.play(s['setting'], s['GPT_role'], s['user_role'], language, ll, pipeline, 6)
             
             results = pd.concat([ results, pd.DataFrame(columns=['language', 'language_level', 'role_object', 'pipeline', 'chat'], data= [(language, ll, s, pipeline_description, chat ),])])
             
             print('AAAAAAAAAAA')
-            time.sleep(10)
+            time.sleep(60)
+            
     
 finally:
 
