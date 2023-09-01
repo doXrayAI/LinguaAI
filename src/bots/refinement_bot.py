@@ -1,6 +1,5 @@
 from bot import Bot
 from utils import load_template, load_cefr
-from time import sleep
 from src.templates.alternatives.role_fitness_bot import role_fitness_refinement_alternatives
 from src.templates.alternatives.role_fitness_language_level_bot import role_fitness_language_level_refinement_alternatives
 from src.templates.alternatives.language_level_bot import language_level_refinement_alternatives
@@ -23,9 +22,7 @@ class LanguageLevelRefinementBot(Bot):
         self._prompt_builder.add_template(args)
         prompt = self._prompt_builder.build()
         self._prompt_builder.pop()
-        
-        sleep(20)
-        
+                
         refinement = self._thread.send(prompt)
         history.append(refinement)
         return refinement, history
@@ -50,8 +47,6 @@ class RoleFollowingBot(Bot):
     def send(self, args, history) :
         '''Accepts the input string as args, stores refinement to history and returns the refinement.'''
         
-        sleep(20)
-
         self._prompt_builder.add_template(args)
         prompt = self._prompt_builder.build()
         self._prompt_builder.pop()
@@ -107,9 +102,7 @@ class RoleFitnessLanguageLevelBot(Bot):
         self._prompt_builder.add_template(args)
         prompt = self._prompt_builder.build()
         self._prompt_builder.pop()
-        
-        sleep(20)
-        
+                
         refinement = self._thread.send(prompt)
         history.append(refinement)
         return refinement, history

@@ -40,8 +40,6 @@ try:
             
             results = pd.concat([ results, pd.DataFrame(columns=['language', 'language_level', 'role_object', 'pipeline', 'chat'], data= [(language, ll, s, pipeline_description, chat ),])])
             
-            print('AAAAAAAAAAA')
-            time.sleep(60)
             
     
 finally:
