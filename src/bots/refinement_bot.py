@@ -24,6 +24,8 @@ class LanguageLevelRefinementBot(Bot):
         prompt = self._prompt_builder.build()
         self._prompt_builder.pop()
         
+        sleep(20)
+        
         refinement = self._thread.send(prompt)
         history.append(refinement)
         return refinement, history
@@ -94,7 +96,9 @@ class RoleFitnessLanguageLevelBot(Bot):
         self.__template = role_fitness_language_level_refinement_alternatives[alternative]
         
         cefr_description = load_cefr(language_level)
-        self._prompt_builder.add_template(self.__template, ( language_level, cefr_description, GPT_role, user_role))
+        self._prompt_builder.add_template(self.__template, ( GPT_role, user_role, language_level, cefr_description))
+        
+        print(self.__template)
         
         
     def send(self, args, history) :
@@ -103,6 +107,8 @@ class RoleFitnessLanguageLevelBot(Bot):
         self._prompt_builder.add_template(args)
         prompt = self._prompt_builder.build()
         self._prompt_builder.pop()
+        
+        sleep(20)
         
         refinement = self._thread.send(prompt)
         history.append(refinement)
