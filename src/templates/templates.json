@@ -1,7 +1,7 @@
 {
     "setting_user_input_validation": "Is the following a description of a place, situation or activity involving people? \"{}\"  Respond only with 1 if it clearly does, otherwise 0.",
 
-    "role_inference_description": "Based on a provided setting description, think of two roles involved in the conversation in said setting. Assign a more moderatory role to GPT and the other to user. Format the output as \"setting\":\"SETTING\",\"roles\": [\"ROLE1\", \"ROLE2\"],\"GPT_role\": \"ROLE\",\"user_role\": \"ROLE\" ",
+    "role_inference_description": "Based on a provided setting description, think of two roles involved in the conversation in said setting. ALWAYS assign a more moderatory role to GPT and the other to user. Format the output as \"setting\":\"SETTING\",\"roles\": [\"ROLE1\", \"ROLE2\"],\"GPT_role\": \"ROLE\",\"user_role\": \"ROLE\" ",
     
     "role_inference_examples":{
                         "template": "Examples:\n\n",  

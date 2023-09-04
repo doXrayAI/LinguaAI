@@ -22,6 +22,8 @@ class ChatBotOperator:
         
         self.__chatbot.add_message(refined_response, role='assistant')
         
+        #print('HISTORY:' + str(history))
+        
         return refined_response
     
     
@@ -35,6 +37,8 @@ class ChatBotOperator:
         refined_response, history = self.__refinement_pipeline(response['content'], [response['content'],])
                 
         self.__chatbot.add_message(refined_response, role='assistant')
+        
+        #print('HISTORY:' + str(history))
         
         return refined_response
     

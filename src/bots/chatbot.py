@@ -6,10 +6,10 @@ from src.templates.alternatives.chatbot_initiation import chatbot_initiation_alt
 class ChatBot(Bot):
     '''A generic chatbot'''
     
-    def __init__(self, setting_description, GPT_role, user_role, language='english', language_level='A1', alternative=0) -> None:
+    def __init__(self, setting_description, GPT_role, user_role, language='english', language_level='A1', init_alternative=1, chat_alternative=0) -> None:
         super().__init__(thread=Thread())
         
-        template = chatbot_initiation_alternatives[alternative]
+        template = chatbot_initiation_alternatives[init_alternative]
         level_description = load_cefr(language_level)
         
         args = (setting_description, language, user_role, GPT_role, language_level, level_description)
