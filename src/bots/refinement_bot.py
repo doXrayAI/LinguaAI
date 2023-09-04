@@ -38,9 +38,7 @@ class RoleFollowingBot(Bot):
         
         #self.__template = load_template('role_following_refinement')
         self.__template = role_fitness_refinement_alternatives[alternative]
-        
-        print(self.__template)
-        
+                
         self._prompt_builder.add_template(self.__template, (GPT_role, user_role, setting))
         
         
@@ -92,9 +90,7 @@ class RoleFitnessLanguageLevelBot(Bot):
         
         cefr_description = load_cefr(language_level)
         self._prompt_builder.add_template(self.__template, ( GPT_role, user_role, language_level, cefr_description))
-        
-        print(self.__template)
-        
+                
         
     def send(self, args, history) :
         '''Accepts the input string as args, stores refinement to history and returns the refinement.'''

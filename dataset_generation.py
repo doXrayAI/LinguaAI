@@ -2,51 +2,67 @@ import pandas as pd
 import json
 import time
 
-from src.bots.refinement_bot import RoleFitnessLanguageLevelBot
+from src.bots.refinement_bot import RoleFitnessLanguageLevelBot, RoleFollowingBot, LanguageLevelRefinementBot
 from src.bot_pipeline import identity_pipeline, make_bot_pipeline
 from src.plays import play as bot_play
 
-fname = 'src/plays/roles.out'
-settings = pd.read_csv(fname, sep=';')
 
-settings['role_object'] = settings['role_object'].apply(json.loads)
+sampled_settings = pd.read_csv('src/plays/dataset.out', sep=';')
+sampled_settings['role_object'] = sampled_settings['role_object'].apply(json.loads)
+
+if 'chat' in sampled_settings:
+    sampled_settings['chat'] = sampled_settings['chat'].apply(json.loads)
+else:
+    sampled_settings['chat'] = [[], ]*18
+
+# TODO define prompt alternatives and pipeline description
+prompt_alt_0 = 3
+prompt_alt_1 = 2 
+pipeline_description = 'RoleFitness('+ str(prompt_alt_0) +')' + 'LanguageLevel(' + str(prompt_alt_1) + ')'
+
 
 language = 'English'
-lang_levels = ['A1', 'A2', 'B1']
 
-
-results = pd.DataFrame(columns=['language', 'language_level', 'role_object', 'pipeline', 'chat'])
+print(sampled_settings)
 
 
 try:
-    for ll in lang_levels:
-        sample = settings.sample(n=3)
+    
+    chats = sampled_settings['chat']
+    
+    for idx in range(18):     
+        s = sampled_settings.iloc[idx]
         
-        for s in sample['role_object']:
-            
-            
-            # TODO define bots and pipeline
-            prompt_alt = 2 
-            bot = RoleFitnessLanguageLevelBot(s['GPT_role'], s['user_role'], ll, prompt_alt)
-            pipeline = make_bot_pipeline([bot.send, ])
-            #pipeline = identity_pipeline
-                        
-            
-            pipeline_description = 'RoleFitnessLangugeLevel(' + str(prompt_alt) + ')'
-
-            # TODO make changes in refinement bot
-                            
-            chat = bot_play.play(s['setting'], s['GPT_role'], s['user_role'], language, ll, pipeline, 6)
-            
-            results = pd.concat([ results, pd.DataFrame(columns=['language', 'language_level', 'role_object', 'pipeline', 'chat'], data= [(language, ll, s, pipeline_description, chat ),])])
-            
+        if s['chat']:
+            continue
+        
+        ro = s['role_object']    
+        
+        # TODO define bots and pipeline
+        bot_0 = RoleFollowingBot(ro['GPT_role'], ro['user_role'], ro['setting'], prompt_alt_0)
+        bot_1 = LanguageLevelRefinementBot(s['language_level'], prompt_alt_1)
+    
+        pipeline = make_bot_pipeline([bot_0.send, bot_1.send, ])
+                    
+                    
+        chat = bot_play.play(ro['setting'], ro['GPT_role'], ro['user_role'], language, s['language_level'], pipeline, 6)      
+        
+        chats[idx] = chat
+        
+        print(idx)
+        
+           
             
     
 finally:
-
-    results['role_object'] = results['role_object'].apply(json.dumps)
-    results['chat'] = results['chat'].apply(json.dumps)
     
-    # TODO update name
+    sampled_settings['chat'] = chats
+
+    sampled_settings['language'] = [language for i in range(18)]
+    sampled_settings['role_object'] = sampled_settings['role_object'].apply(json.dumps)
+    sampled_settings['chat'] = sampled_settings['chat'].apply(json.dumps)
+    
+    sampled_settings['pipeline'] = [pipeline_description for i in range(18)]
+     
     fname_out = 'src/plays/dataset.out'
-    results.to_csv(fname_out, index=False , sep=';')
+    sampled_settings.to_csv(fname_out, index=False , sep=';')
