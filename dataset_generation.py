@@ -2,7 +2,7 @@ import pandas as pd
 import json
 import time
 
-from src.bots.refinement_bot import RoleFitnessLanguageLevelBot, RoleFollowingBot, LanguageLevelRefinementBot
+from src.bots.refinement_bot import RoleFitnessLanguageLevelBot, RoleFitnessBot, LanguageLevelBot
 from src.bot_pipeline import identity_pipeline, make_bot_pipeline
 from src.plays import play as bot_play
 
@@ -39,8 +39,8 @@ try:
         ro = s['role_object']    
         
         # TODO define bots and pipeline
-        bot_0 = RoleFollowingBot(ro['GPT_role'], ro['user_role'], ro['setting'], prompt_alt_0)
-        bot_1 = LanguageLevelRefinementBot(s['language_level'], prompt_alt_1)
+        bot_0 = RoleFitnessBot(ro['GPT_role'], ro['user_role'], ro['setting'], prompt_alt_0)
+        bot_1 = LanguageLevelBot(s['language_level'], prompt_alt_1)
     
         pipeline = make_bot_pipeline([bot_0.send, bot_1.send, ])
                     

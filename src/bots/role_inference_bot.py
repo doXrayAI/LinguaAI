@@ -16,7 +16,7 @@ class RoleInferenceBot(Bot):
         self.__template['examples'] = load_template('role_inference_examples')
         self.__template['query'] = load_template('role_inference_query')
         
-        self._prompt_builder.add_template(self.__template['description']['template'])
+        self._prompt_builder.add_template(self.__template['description'])
         self._prompt_builder.add_template(self.__template['examples']['template'])
         self._prompt_builder.add_template(self.__template['examples']['choices'][1])
         self._prompt_builder.add_template(self.__template['examples']['choices'][3])
@@ -26,12 +26,12 @@ class RoleInferenceBot(Bot):
         
     def send(self, args):
 
-        self._prompt_builder.add_template(self.__template['query']['template'], args)
+        self._prompt_builder.add_template(self.__template['query'], args)
         
         prompt = self._prompt_builder.build()
         self._prompt_builder.pop()
         
-        result = self._thread.send(prompt).replace('\n', '') 
+        result = self._thread.send(prompt).strip().strip(',').replace('\n', '') 
         
         # convert result to dict
         try:

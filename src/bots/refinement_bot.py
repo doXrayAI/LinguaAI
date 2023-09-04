@@ -4,13 +4,13 @@ from src.templates.alternatives.role_fitness_bot import role_fitness_refinement_
 from src.templates.alternatives.role_fitness_language_level_bot import role_fitness_language_level_refinement_alternatives
 from src.templates.alternatives.language_level_bot import language_level_refinement_alternatives
 
-class LanguageLevelRefinementBot(Bot):
+class LanguageLevelBot(Bot):
     '''Refining the input to match given language level'''
     
     def __init__(self, language_level, alternative):
         super().__init__()
         self.__template = dict()
-        #self.__template = load_template('language_level_refinement')
+
         self.__template = language_level_refinement_alternatives[alternative]
         language_level_description = load_cefr(language_level)
         
@@ -29,14 +29,13 @@ class LanguageLevelRefinementBot(Bot):
     
     
     
-class RoleFollowingBot(Bot):
+class RoleFitnessBot(Bot):
     '''Refining the input to match the GPT and user role'''
     
     def __init__(self, GPT_role, user_role, setting, alternative=0):
         super().__init__()
         self.__template = dict()
         
-        #self.__template = load_template('role_following_refinement')
         self.__template = role_fitness_refinement_alternatives[alternative]
                 
         self._prompt_builder.add_template(self.__template, (GPT_role, user_role, setting))

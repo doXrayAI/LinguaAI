@@ -32,14 +32,9 @@ def chat_initiation():
     roles = role_inference_bot.send((setting_description,))
     
     print(roles)
-        
-    caption_bot = CaptionBot()
-    caption = caption_bot.send((setting_description, roles['GPT_role'], roles['user_role']))
-    
-    print(caption)
     
     # Bot list and refinement pipeline with the best refinement bot alternatives    
-    bot_list = [RoleFollowingBot(roles['GPT_role'], roles['user_role'], setting_description, alternative=3), RoleFitnessLanguageLevelBot(roles['GPT_role'], roles['user_role'], language_level, alternative=0) ]    
+    bot_list = [RoleFitnessBot(roles['GPT_role'], roles['user_role'], setting_description, alternative=3), LanguageLevelBot( language_level, alternative=1) ]    
     pipeline = make_bot_pipeline([b.send for b in bot_list])
     
     # Initialize chat bot

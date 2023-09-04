@@ -1,17 +1,10 @@
 {
-    "setting_user_input_validation": {
-                                        "template": "Is the following a description of a place, situation or activity involving people? \"{}\"  Respond only with 1 if it clearly does, otherwise 0.",
-                                        "n_args": 1
-                                        },
+    "setting_user_input_validation": "Is the following a description of a place, situation or activity involving people? \"{}\"  Respond only with 1 if it clearly does, otherwise 0.",
 
-    "role_inference_description":{
-                        "template": "Based on a provided setting description, think of two roles involved in the conversation in said setting. Assign a more moderatory role to GPT and the other to user. Format the output as \"setting\":\"SETTING\",\"roles\": [\"ROLE1\", \"ROLE2\"],\"GPT_role\": \"ROLE\",\"user_role\": \"ROLE\" ",
-                        "n_args": 0   
-                    },
+    "role_inference_description": "Based on a provided setting description, think of two roles involved in the conversation in said setting. Assign a more moderatory role to GPT and the other to user. Format the output as \"setting\":\"SETTING\",\"roles\": [\"ROLE1\", \"ROLE2\"],\"GPT_role\": \"ROLE\",\"user_role\": \"ROLE\" ",
     
     "role_inference_examples":{
-                        "template": "Examples:\n\n",
-                        "n_args": 0,   
+                        "template": "Examples:\n\n",  
                         "choices": [
                             "\"setting\": \"A conversation in a cafe in english.\", \"roles\": [\"waiter\", \"customer\"], \"GPT_role\": \"waiter\", \"user_role\": \"customer\"\n",
                             "\"setting\": \"A conversation in a library.\", \"roles\": [\"student\", \"librarian\"], \"GPT_role\": \"librarian\", \"user_role\": \"student\"\n",
@@ -21,45 +14,12 @@
                         ]
                     },
     
-    "role_inference_query": {
-                            "template": "\"setting\": \"{}\"",
-                            "n_args": 1
-                        },
-
-    "chat_bot_initiation":{
-                        "template":  "{0}. The user is a {2}. Act as if you were {3}. Participate in a dialogue as {3} in {1}. Generate one conversation line. You can only speak {1} on level {4}. {4} is defined as {5}. From now on, start all your responses with: {3}: ...",
-                        "n_args" : 6
-                        },
-
-    "conversation_caption_generation":
-                        {
-                            "template": "Generate a setting caption. The setting :{}. There are 2 participants. Participants are {} and {}. Write 1-2 sentences to explain what is happening. Clearly state who are the participants. Don't generate new lines. Use simple english.",
-                            "n_args": 3
-                        },
-
-    "feedback_initiation":{
-                            "template": "Feedback initiation {} {}",
-                            "n_args": 2
-                        },
+    "role_inference_query": "\"setting\": \"{}\"",
 
 
-    "language_level_refinement": {
-                                    "template": "Rephrase the text to be on {0} level of CEFR language proficiency. The {0} level is defined as: {1}.\n\nExamples of reasoning:\n\nSentence-> Lab supervisor: There is no way this can be achieved in just under 20 minutes, they must have gone mad.\nLevel-> A1\nThought-> Is there too complex vocabulary? Can the grammar be simplified? Can the most basic user understand this?\nRephrasing-> Lab supervisor: They could not do this in 20 minutes. They are crazy.\n\nSentence-> Comentator: Football matches can create great atmosphere in stadiums because football is competitive.\nLevel->  C1\nThought-> Can the grammar and vocabulary be improved? Does it fit C1 knowledge?\nRephrasing-> Comentator: The intensity and competitiveness of football matches can create an electrifying atmosphere in stadiums.\n\nRephrase the text to be on a {0} level. Only output the rephrasing.",
-                                    "n_args" : 2
-                                },
+    "conversation_caption_generation" : "Generate a setting caption. The setting :{}. There are 2 participants. Participants are {} and {}. Write 1-2 sentences to explain what is happening. Clearly state who are the participants. Don't generate new lines. Use simple english.",
+                        
 
-    "role_following_refinement": {
-                                    "template": "Act as a {0}. Rephrase the sentence to sound more like a {0}, while keeping the meaning: ",
-                                    "n_args" : 3
-                                },
+    "user_engagement_refinement":  "I will give you a text by {0} talking to {1} in a setting described as  \"{2}\". Make minimal changes to the text from {0} so it encourages longer and more detailed response from {1}. Keep the level of language proficiency used. Do not change the text length. \n\nExample: This building is so cool.\nRefinement: This is such an amazing building, I think it's Vienna Secession style.\nExample: "
 
-    "user_engagement_refinement":{
-                                    "template": "I will give you a text by {0} talking to {1} in a setting described as  \"{2}\". Make minimal changes to the text from {0} so it encourages longer and more detailed response from {1}. Keep the level of language proficiency used. Do not change the text length. \n\nExample: This building is so cool.\nRefinement: This is such an amazing building, I think it's Vienna Secession style.\nExample: ",
-                                    "n_args": 3
-                                },
-
-    "role_fitness_language_level_refinement": {
-                                    "template": "Rephrase the sentence with 2 goalsAct as a {0}. Rephrase the sentence to sound more like a {0}, while keeping the meaning: : 1. The sentence should only use {2} level of language proficiency, defined as {3}.  2. The sentence should use tone and voice of {0} speaking to {1}.\nExamples:\n\nSentence-> waiter: I can't give you that drink because we don't have it.\nTask-> The sentence should use tone and voice of a waiter talking to a customer.\nThought-> Does it fit the role of a waiter? If not, rephrase it to fit the role.\nTask-> The sentence should only use C2 level of language.\nThought-> Is this C2 level of language? If not, rephrase it to be C2 level.\nRefinemen-> waiter: I am very sorry, but we do not serve that drink, would you fancy a cocktail instead? Our bartenders make exquisit cocktails.\n\nSentence-> kid: Mother, I wish to go home.\nTask-> The sentence should use tone and voice of a child speaking to its mother.\nThought-> Does it match the role of a small child? If not rephrase it to match the role.\nTask-> The sentence should only use A2 level of language proficiency.\nThought-> Is the sentence on A2 level of language? If not, rephrase it to be A2.\nRefinement-> kid: Mommy, I wanna go homee!.\n\n Return ONLY refinement.\n\nSentence:",
-                                    "n_args" : 4
-                                }
 }

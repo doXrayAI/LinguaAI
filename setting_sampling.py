@@ -1,10 +1,6 @@
 import pandas as pd
 import json
-import time
 
-from src.bots.refinement_bot import RoleFitnessLanguageLevelBot
-from src.bot_pipeline import identity_pipeline, make_bot_pipeline
-from src.plays import play as bot_play
 
 fname = 'src/plays/roles.out'
 settings = pd.read_csv(fname, sep=';')
