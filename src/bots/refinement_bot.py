@@ -84,7 +84,6 @@ class RoleFitnessLanguageLevelBot(Bot):
         
         super().__init__()
         self.__template = dict()
-        #self.__template = load_template('role_fitness_language_level_refinement')
         self.__template = role_fitness_language_level_refinement_alternatives[alternative]
         
         cefr_description = load_cefr(language_level)

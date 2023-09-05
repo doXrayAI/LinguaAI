@@ -12,5 +12,5 @@ role_fitness_refinement_alternatives = [
     # Arguments: GPT_role, user_role,
     "Act as a {0}. You are speaking to {1}. Make minimal changes to the tone and voice of the provided sentence to sound more like {0}\n Examples:\nWaiter: What do you want?-> Waiter: What can I offer you today?\nPoliceman: Lady, what happened here? -> Policeman: Ma'am, could you provide more information about the situation?",
 
-    "Act as a {0}. Make minimal changes to the tone and voice of the provided sentence to sound more like {0}.  Keep the meaning of the sentence.\nExamples:\nWaiter: What do you want?-> Waiter: What can I offer you today?\nPoliceman: Lady, what happened here? -> Policeman: Ma'am, could you provide more information about the situation?" ,
+    "Act as a {0}. Make minimal changes to the tone and voice of the provided sentence to sound more like {0}. Keep the meaning of the sentence COMPLETELY. Do not add unnecessary greetings. \nExamples:\nWaiter: What do you want?-> Waiter: What can I offer you today?\nPoliceman: Lady, what happened here? -> Policeman: Ma'am, could you provide more information about the situation?" ,
 ]
