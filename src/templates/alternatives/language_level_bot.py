@@ -5,7 +5,7 @@ language_level_refinement_alternatives = [
 
         # Basic instruction with language level description
         # Arguments: language_level, cefr_description
-        "Rephrase the text to be on {0} level of CEFR language proficiency. The {0} level is defined as: {1}. All text must be grammatically correct. Do not change the meaning. Rephrase the text to be on a {0} level: ",
+        "Rephrase the text to be on {0} level of CEFR language proficiency. The {0} level is defined as: {1}. All text must be grammatically correct. Do not change the meaning. Rephrase the text to COMPLETELY fit the {0} level of language proficiency definition: ",
 
         # Instruction + language level description + CoT
         # Arguments: language_level, cefr_description

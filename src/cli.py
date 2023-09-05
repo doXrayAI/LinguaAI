@@ -2,11 +2,13 @@ from src.bots.input_validation_bot import InputValidationBot
 from src.bots.role_inference_bot import RoleInferenceBot
 from src.bots.caption_bot import CaptionBot
 from src.bots.chatbot import ChatBot
+from src.bots.summarization_bot import SummarizationBot
 from src.bots.refinement_bot import *
 from src.bot_pipeline import make_bot_pipeline
+from src.parameters import summarization_parametes
 from src.bot_operator import ChatBotOperator
 
-def chat_initiation():
+def chat_initiation(summarize= False):
         
     validation_bot = InputValidationBot()
     role_inference_bot = RoleInferenceBot()
@@ -34,7 +36,7 @@ def chat_initiation():
     print(roles)
     
     # Bot list and refinement pipeline with the best refinement bot alternatives    
-    bot_list = [RoleFitnessBot(roles['GPT_role'], roles['user_role'], setting_description, alternative=4), LanguageLevelBot( language_level, alternative=2) ]    
+    bot_list = [RoleFitnessBot(roles['GPT_role'], roles['user_role'], setting_description, alternative=4), LanguageLevelBot( language_level, alternative=1) ]    
     pipeline = make_bot_pipeline([b.send for b in bot_list])
     
     # Initialize chat bot
@@ -47,6 +49,10 @@ def chat_initiation():
     chatbot_message = operator.chatbot_setup()
     print(chatbot_message)
     
+    summary = ''
+    summarization_bot = SummarizationBot(4, summarization_parametes)
+    summary_window = 4
+    
     while 1:
         m = input(roles['user_role'] + ': ')
         
@@ -55,6 +61,17 @@ def chat_initiation():
         gpt_response = operator.send_message(m)
         
         print(gpt_response)
-    
+        
+        if summarize:
+            length = operator.get_dialogue_length()
+            print(length)
+            if length > 0 and length % summary_window == 1:
+                chat_string = operator.get_dialogue_string(summary_window)
+                new_summary = summarization_bot.send(summary, chat_string)
+                print('SUMMARY: ' + new_summary)
+                print('SUMMARY LEN: ' + str(len(new_summary)))
+                summary = new_summary
+        
+
     
     
