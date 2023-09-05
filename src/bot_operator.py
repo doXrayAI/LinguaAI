@@ -22,7 +22,7 @@ class ChatBotOperator:
         
         self.__chatbot.add_message(refined_response, role='assistant')
         
-        #print('HISTORY:' + str(history))
+        print('HISTORY:' + str(history))
         
         return refined_response
     
@@ -38,7 +38,7 @@ class ChatBotOperator:
                 
         self.__chatbot.add_message(refined_response, role='assistant')
         
-        #print('HISTORY:' + str(history))
+        print('HISTORY:' + str(history))
         
         return refined_response
     
