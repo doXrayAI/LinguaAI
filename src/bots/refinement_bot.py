@@ -2,7 +2,7 @@ from bot import Bot
 from utils import load_template, load_cefr
 from src.templates.alternatives.role_fitness_bot import role_fitness_refinement_alternatives
 from src.templates.alternatives.role_fitness_language_level_bot import role_fitness_language_level_refinement_alternatives
-from src.templates.alternatives.language_level_bot import language_level_refinement_alternatives
+from src.templates.alternatives.language_level_bot import language_level_refinement_alternatives, language_level_examples
 
 class LanguageLevelBot(Bot):
     '''Refining the input to match given language level'''
@@ -14,7 +14,9 @@ class LanguageLevelBot(Bot):
         self.__template = language_level_refinement_alternatives[alternative]
         language_level_description = load_cefr(language_level)
         
-        self._prompt_builder.add_template(self.__template, (language_level, language_level_description))
+        examples = '\n'.join(language_level_examples[language_level])
+        
+        self._prompt_builder.add_template(self.__template, (language_level, language_level_description, examples))
         
         
     def send(self, args, history) :
@@ -28,6 +30,18 @@ class LanguageLevelBot(Bot):
         return refinement, history
     
     
+class LanguageLevelSimplificationBot(LanguageLevelBot):
+    
+    def __init__(self, language_level):
+        super().__init__(language_level, alternative=4)
+        self.__language_level = language_level
+        
+    def send(self, args, history):
+        if self.__language_level in ['A1', 'A2']: # only simplify A1 and A2 language levels
+            return super().send(args, history)
+        
+        history.append(args)
+        return args, history
     
 class RoleFitnessBot(Bot):
     '''Refining the input to match the GPT and user role'''

@@ -36,7 +36,7 @@ def chat_initiation(summarize= False):
     print(roles)
     
     # Bot list and refinement pipeline with the best refinement bot alternatives    
-    bot_list = [RoleFitnessBot(roles['GPT_role'], roles['user_role'], setting_description, alternative=4), LanguageLevelBot( language_level, alternative=1) ]    
+    bot_list = [RoleFitnessBot(roles['GPT_role'], roles['user_role'], setting_description, alternative=4), LanguageLevelBot( language_level, alternative=3), LanguageLevelSimplificationBot(language_level) ]    
     pipeline = make_bot_pipeline([b.send for b in bot_list])
     
     # Initialize chat bot
