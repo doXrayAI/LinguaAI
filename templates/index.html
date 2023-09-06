@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Language Learning Chat</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="static/css/main.css"/>
+    </head>
+
+    <body>
+        <div class="chat-container">
+            <h1>Language learning</h1>
+
+            <form id="user-selection-form">
+                <label for="language">Language:</label>
+                <input type="text" id="language" placeholder="i.e. English" name="language" required><br><br>
+                
+                <label for="language-level">Language Level:</label>
+                <select id="language-level" name="language-level">
+                    <option value="A1">A1</option>
+                    <option value="A2">A2</option>
+                    <option value="B1">B1</option>
+                    <option value="B2">B2</option>
+                    <option value="C1">C1</option>
+                    <option value="C2">C2</option>
+                </select><br><br>
+                
+                <label for="setting-description">Setting Description:</label>
+                <input type="text" id="setting-description" placeholder="i.e. In a cafe..." name="setting-description" required>
+                <div id="error-message" style="color: red;"></div> <!-- Error message container -->
+                <br><br>      
+                
+                <input type="submit" id="submitSelectionBtn" value="Submit">
+            </form> <br>
+
+            <div id="roles"></div> <br>
+
+            <div id="result"></div>
+            <form id="chat-form">
+            <input
+                type="text"
+                id="user-input"
+                name="user_input"
+                placeholder="Type your message..."
+            />
+            <button type="submit" id="submitBtn">Send</button>
+            </form> <br><br>
+
+        </div>
+    </body>
+    <script src="static/js/validation.js" type="module"></script>
+    <script src="static/js/main.js" type="module"></script>
+</html>

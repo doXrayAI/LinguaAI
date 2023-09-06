@@ -12,6 +12,6 @@ class InputValidationBot(Bot):
     def send(self, args) :
         prompt = self._prompt_builder.add_template(self.__template, args).build()
         self._prompt_builder.reset()
-        
+                
         valid = self._thread.send(prompt)
         return valid == '1'
