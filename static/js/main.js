@@ -1,5 +1,5 @@
-import {pr, show_hide_invalid_setting_message, show_roles } from './validation.js'
-
+import {show_hide_invalid_setting_message, show_roles } from './validation.js'
+import {get_chat_messages, get_chats, infer_roles, validate_context} from './api_call.js'
 
 let language_global;
 let language_level_global;
@@ -8,6 +8,7 @@ let role_object_global;
 
 
 window.onload = function () {
+
     show_hide_invalid_setting_message(true);
 
     document
@@ -16,13 +17,18 @@ window.onload = function () {
       // Prevent the form from submitting and refreshing the page
       event.preventDefault();
 
-      let user_language = document.getElementById("language").value;
-      let language_level = document.getElementById("language-level").value;
-      let setting_description = document.getElementById("setting-description").value;
+      let user_language = $("#language").val();
+      let language_level = $("#language-level").val();
+      let setting_description = $("#setting-description").val();
+
+      get_chats()
+      get_chat_messages(1)
+      validate_context(user_language, language_level, setting_description)
+      infer_roles(setting_description)
 
       let url = `/context/${user_language}/${language_level}/${setting_description}`
 
-      console.log(url)
+      //console.log(url)
 
       language_global = user_language
       language_level_global = language_level
@@ -31,7 +37,7 @@ window.onload = function () {
         .then((response) => response.json())
         .then((data) => {
             let valid_state = data.content
-            console.log(valid_state)
+            //console.log(valid_state)
 
             show_hide_invalid_setting_message(valid_state)
 
@@ -69,6 +75,8 @@ $(function(){
       $(".side-two").css({
         "left": "0"
       });
+
+      console.log('BBBBBBBBB')
     });
 
     $(".newMessage-back").click(function() {
@@ -77,3 +85,4 @@ $(function(){
       });
     });
 }) 
+

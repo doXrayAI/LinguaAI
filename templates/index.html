@@ -106,6 +106,8 @@
                           </span>
                           </div>
                           <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
+                            <span class="time-meta pull-right">English A1
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -124,6 +126,8 @@
                           </span>
                           </div>
                           <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
+                            <span class="time-meta pull-right">French B2
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -146,7 +150,8 @@
 
 
                   <div class="row compose-sideBar">
-                    <form id="user-selection-form">
+                    <div class="row sideBar-body" style="height: fit-content;">
+                    <form id="user-selection-form" style="display: inline-block;">
                         <div class="form-group">
                           <label for="language">Language</label>
                           <input type="text" class="form-control" id="language" aria-describedby="languageHelp" placeholder="Enter language" required>
@@ -155,28 +160,24 @@
                         <div class="form-group">
                           <label for="setting-description">Setting description</label><br>
                           <input class="form-control" id="setting-description" aria-describedby="description-error" placeholder="i.e: In a cafe..." required>
-                          <small id="description-error" class="form-text text-muted" style="color:lightcoral ;">Choose a language.</small>
+                          <small id="description-error" class="form-text text-muted" style="color:lightcoral ;"></small>
                         </div>
                         <div class="form-group">
                             <label for="language-level">Language level</label>
                             <select id="language-level" name="language-level">
-                                <option value="A1">A1</option>
-                                <option value="A2">A2</option>
-                                <option value="B1">B1</option>
-                                <option value="B2">B2</option>
-                                <option value="C1">C1</option>
-                                <option value="C2">C2</option>
+                                <option value="A1">A1   </option>
+                                <option value="A2">A2   </option>
+                                <option value="B1">B1   </option>
+                                <option value="B2">B2   </option>
+                                <option value="C1">C1   </option>
+                                <option value="C2">C2   </option>
                             </select>
                         </div>
-
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Dropdown link</a></li>
-                            <li><a href="#">Dropdown link</a></li>
-                        </ul>
                         
                         <button type="submit" class="btn btn-primary submitSelectionBtn" style="background-color: #00bfa5; display: flex; border:none; width: 130px; justify-content: center;">Submit</button>
                         
                       </form>
+                      </div>
                   </div>
         
                 </div>
@@ -315,6 +316,8 @@
           </div>
           
 </body>
+    <script src="static/js/api_call.js" type="module"></script>
     <script src="static/js/validation.js" type="module"></script>
     <script src="static/js/main.js" type="module"></script>
+    
 </html>
