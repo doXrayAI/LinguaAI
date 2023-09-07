@@ -8,11 +8,11 @@ function pr(){
 
 function show_hide_invalid_setting_message(valid = True){
 
-    document.getElementById("error-message").textContent = "";
+    document.getElementById("description-error").textContent = "";
 
     if (!valid) {
         // Display an error message in red
-        document.getElementById("error-message").textContent = "Setting Description is not valid. Please try something else.";
+        document.getElementById("description-error").textContent = "Setting description is not valid. Please try something else.";
         // clear the input
         document.getElementById("setting-description").value = ""
     }
@@ -21,8 +21,8 @@ function show_hide_invalid_setting_message(valid = True){
 
 function show_roles(role_object){
 
-    let elem = document.getElementById("roles")
-    elem.textContent = `Bot takes the role of ${role_object.GPT_role}. Your role is ${role_object.user_role}.`
+    document.getElementById("roles").textContent = `Bot takes the role of ${role_object.GPT_role}. Your role is ${role_object.user_role}.`
+    document.getElementById("setting").textContent = `The setting of your conversation is: ${role_object.setting}`
 }
 
 

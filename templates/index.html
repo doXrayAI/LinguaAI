@@ -6,18 +6,23 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Language Learning Chat</title>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" type="text/css" href="static/css/main.css"/>
+
     </head>
 
+    <!---
     <body>
-        <div class="chat-container">
-            <h1>Language learning</h1>
-
+        <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:25%" >
+            
+            <h2 class="w3-bar-item">Choose your settings</h2>
             <form id="user-selection-form">
-                <label for="language">Language:</label>
+                <label class="w3-bar-item" for="language">Language:</label>
                 <input type="text" id="language" placeholder="i.e. English" name="language" required><br><br>
                 
-                <label for="language-level">Language Level:</label>
+                <label for="language-level" class="w3-bar-item">Language Level:</label>
                 <select id="language-level" name="language-level">
                     <option value="A1">A1</option>
                     <option value="A2">A2</option>
@@ -29,15 +34,21 @@
                 
                 <label for="setting-description">Setting Description:</label>
                 <input type="text" id="setting-description" placeholder="i.e. In a cafe..." name="setting-description" required>
-                <div id="error-message" style="color: red;"></div> <!-- Error message container -->
+                <div id="error-message" style="color: red;"></div> 
                 <br><br>      
                 
                 <input type="submit" id="submitSelectionBtn" value="Submit">
             </form> <br>
 
-            <div id="roles"></div> <br>
+            <div id="roles"></div> 
+            <div id="setting"></div>
+            <br>
+            
+        </div>
 
-            <div id="result"></div>
+        <div class="w3-container right-pane">
+            <h1 class="w3-container w3-teal">Language learning</h1>
+            <div class="w3-container" id="result"></div>
             <form id="chat-form">
             <input
                 type="text"
@@ -50,6 +61,260 @@
 
         </div>
     </body>
+
+    -->
+
+    <body>
+        <div class="container app">
+            <div class="row app-one">
+
+              <!--- SIDEBAR BEGINS -->
+              <div class="col-sm-4 side"> 
+                <div class="side-one">
+                  <div class="row heading">
+                    <div class="col-sm-3 col-xs-3 heading-avatar">
+                      <div class="heading-avatar-icon">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png">
+                      </div>
+                    </div>
+                    <div class="col-sm-2 col-xs-2 heading-compose  pull-right">
+                      <i class="fa fa-comments fa-2x  pull-right" aria-hidden="true"></i>
+                    </div>
+                  </div>
+          
+                  <div class="row searchBox">
+                    <div class="col-sm-12 searchBox-inner">
+                      <div class="form-group has-feedback">
+                        <input id="searchText" type="text" class="form-control" name="searchText" placeholder="Search">
+                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                      </div>
+                    </div>
+                  </div>
+          
+                <!---Previous chat list begins -->
+                  <div class="row sideBar">
+                    <div class="row sideBar-body">
+                      <div class="col-sm-3 col-xs-3 sideBar-avatar">
+                        <div class="avatar-icon">
+                          <img src="https://bootdey.com/img/Content/avatar/avatar1.png">
+                        </div>
+                      </div>
+                      <div class="col-sm-9 col-xs-9 sideBar-main">
+                        <div class="row">
+                          <div class="col-sm-8 col-xs-8 sideBar-name">
+                            <span class="name-meta">Ivica
+                          </span>
+                          </div>
+                          <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+        
+                    <div class="row sideBar-body">
+                      <div class="col-sm-3 col-xs-3 sideBar-avatar">
+                        <div class="avatar-icon">
+                          <img src="https://bootdey.com/img/Content/avatar/avatar4.png">
+                        </div>
+                      </div>
+                      <div class="col-sm-9 col-xs-9 sideBar-main">
+                        <div class="row">
+                          <div class="col-sm-8 col-xs-8 sideBar-name">
+                            <span class="name-meta">Slavica
+                          </span>
+                          </div>
+                          <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!--SIDE TWO BEGINS-->
+                <div class="side-two">
+                  <div class="row newMessage-heading">
+                    <div class="row newMessage-main">
+                      <div class="col-sm-2 col-xs-2 newMessage-back">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                      </div>
+                      <div class="col-sm-10 col-xs-10 newMessage-title">
+                        New Chat
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="row compose-sideBar">
+                    <form id="user-selection-form">
+                        <div class="form-group">
+                          <label for="language">Language</label>
+                          <input type="text" class="form-control" id="language" aria-describedby="languageHelp" placeholder="Enter language" required>
+                          <small id="languageHelp" class="form-text text-muted">Choose a language.</small>
+                        </div>
+                        <div class="form-group">
+                          <label for="setting-description">Setting description</label><br>
+                          <input class="form-control" id="setting-description" aria-describedby="description-error" placeholder="i.e: In a cafe..." required>
+                          <small id="description-error" class="form-text text-muted" style="color:lightcoral ;">Choose a language.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="language-level">Language level</label>
+                            <select id="language-level" name="language-level">
+                                <option value="A1">A1</option>
+                                <option value="A2">A2</option>
+                                <option value="B1">B1</option>
+                                <option value="B2">B2</option>
+                                <option value="C1">C1</option>
+                                <option value="C2">C2</option>
+                            </select>
+                        </div>
+
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Dropdown link</a></li>
+                            <li><a href="#">Dropdown link</a></li>
+                        </ul>
+                        
+                        <button type="submit" class="btn btn-primary submitSelectionBtn" style="background-color: #00bfa5; display: flex; border:none; width: 130px; justify-content: center;">Submit</button>
+                        
+                      </form>
+                  </div>
+        
+                </div>
+                <!--Side two ends-->
+
+              </div>
+              <!---Sidebar ends -->
+
+
+          
+              <!-- CONVERSATION BEGINS -->
+              <div class="col-sm-8 conversation">
+
+
+                <!-- Heading for conversation begins -->
+                <div class="row heading">
+                  <div class="col-sm-2 col-md-1 col-xs-3 heading-avatar">
+                    <div class="heading-avatar-icon">
+                      <img src="https://bootdey.com/img/Content/avatar/avatar2.png">
+                    </div>
+                  </div>
+                  <div class="col-sm-8 col-xs-7 heading-name">
+                    <a class="heading-name-meta">GPT role
+                    </a>
+                    <span class="heading-online">Online</span>
+                  </div>
+                </div>
+                <!--- Heading for conversation ends -->
+          
+                <!-- CONVERSATION -->
+                <div class="row message" id="conversation">
+
+                  <div class="row message-body">
+                    <div class="col-sm-12 message-main-receiver">
+                      <div class="receiver">
+                        <div class="message-text">
+                         Hi, what are you doing?!
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+          
+                  <div class="row message-body">
+                    <div class="col-sm-12 message-main-sender">
+                      <div class="sender">
+                        <div class="message-text">
+                          I am doing nothing man!
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                <div class="row message-body">
+                    <div class="col-sm-12 message-main-receiver">
+                      <div class="receiver">
+                        <div class="message-text">
+                         Mess 1
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row message-body">
+                    <div class="col-sm-12 message-main-receiver">
+                      <div class="receiver">
+                        <div class="message-text">
+                         Mess 3
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row message-body">
+                    <div class="col-sm-12 message-main-receiver">
+                      <div class="receiver">
+                        <div class="message-text">
+                         Mess 3
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row message-body">
+                    <div class="col-sm-12 message-main-receiver">
+                      <div class="receiver">
+                        <div class="message-text">
+                         Mess 3
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row message-body">
+                    <div class="col-sm-12 message-main-receiver">
+                      <div class="receiver">
+                        <div class="message-text">
+                         Mess 3
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row message-body">
+                    <div class="col-sm-12 message-main-receiver">
+                      <div class="receiver">
+                        <div class="message-text">
+                         Mess 3
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div>
+          
+                <!-- REPLY BAR begins-->
+                <div class="row reply">
+                  <!--<div class="col-sm-1 col-xs-1 reply-emojis">
+                    <i class="fa fa-smile-o fa-2x"></i>
+                  </div> -->
+                  <div class="col-sm-11 col-xs-11 reply-main">
+                    <textarea class="form-control" rows="1" id="comment" placeholder="Message..."></textarea>
+                  </div>
+                  <!--<div class="col-sm-1 col-xs-1 reply-recording">
+                    <i class="fa fa-microphone fa-2x" aria-hidden="true"></i>
+                  </div> -->
+                  <div class="col-sm-1 col-xs-1 reply-send">
+                    <i class="fa fa-send fa-2x" aria-hidden="true"></i>
+                  </div>
+                </div>
+                <!-- REPLY BAR ends-->
+
+            </div>
+            </div>
+          </div>
+          
+</body>
     <script src="static/js/validation.js" type="module"></script>
     <script src="static/js/main.js" type="module"></script>
 </html>
