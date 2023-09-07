@@ -1,5 +1,5 @@
 import {show_hide_invalid_setting_message, show_roles } from './validation.js'
-import {get_chat_messages, get_chats, infer_roles, validate_context} from './api_call.js'
+import {get_chat_messages, get_chats, infer_roles, validate_context, create_new_chat} from './api_call.js'
 
 let language_global;
 let language_level_global;
@@ -21,10 +21,12 @@ window.onload = function () {
       let language_level = $("#language-level").val();
       let setting_description = $("#setting-description").val();
 
-      get_chats()
-      get_chat_messages(1)
-      validate_context(user_language, language_level, setting_description)
-      infer_roles(setting_description)
+      //get_chats()
+      //get_chat_messages(1)
+      //validate_context(user_language, language_level, setting_description)
+      //infer_roles(setting_description)
+      create_new_chat(setting_description, 'bartender', 'customer', user_language, language_level)
+
 
       let url = `/context/${user_language}/${language_level}/${setting_description}`
 

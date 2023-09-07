@@ -34,8 +34,8 @@ def get(setting_description):
     
 @app.route('/new_chat/<setting>/<GPT_role>/<user_role>/<language>/<language_level>')
 def new_chat(setting, GPT_role, user_role, language, language_level):
-    # TODO
-    ...
+    res = services.add_new_chat(setting, GPT_role, user_role, language, language_level)
+    return jsonify(res)
     
     
 @app.route('/chats')
@@ -44,7 +44,7 @@ def get_chats():
     
     
 @app.route('/chat_messages/<chat_id>')
-def get_chat_messages(chat_id = 0):
+def get_chat_messages(chat_id = '0'):
     return jsonify(services.get_chat_messages(chat_id))
     
     
