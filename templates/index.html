@@ -13,57 +13,6 @@
 
     </head>
 
-    <!---
-    <body>
-        <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:25%" >
-            
-            <h2 class="w3-bar-item">Choose your settings</h2>
-            <form id="user-selection-form">
-                <label class="w3-bar-item" for="language">Language:</label>
-                <input type="text" id="language" placeholder="i.e. English" name="language" required><br><br>
-                
-                <label for="language-level" class="w3-bar-item">Language Level:</label>
-                <select id="language-level" name="language-level">
-                    <option value="A1">A1</option>
-                    <option value="A2">A2</option>
-                    <option value="B1">B1</option>
-                    <option value="B2">B2</option>
-                    <option value="C1">C1</option>
-                    <option value="C2">C2</option>
-                </select><br><br>
-                
-                <label for="setting-description">Setting Description:</label>
-                <input type="text" id="setting-description" placeholder="i.e. In a cafe..." name="setting-description" required>
-                <div id="error-message" style="color: red;"></div> 
-                <br><br>      
-                
-                <input type="submit" id="submitSelectionBtn" value="Submit">
-            </form> <br>
-
-            <div id="roles"></div> 
-            <div id="setting"></div>
-            <br>
-            
-        </div>
-
-        <div class="w3-container right-pane">
-            <h1 class="w3-container w3-teal">Language learning</h1>
-            <div class="w3-container" id="result"></div>
-            <form id="chat-form">
-            <input
-                type="text"
-                id="user-input"
-                name="user_input"
-                placeholder="Type your message..."
-            />
-            <button type="submit" id="submitBtn">Send</button>
-            </form> <br><br>
-
-        </div>
-    </body>
-
-    -->
-
     <body>
         <div class="container app">
             <div class="row app-one">
@@ -92,46 +41,8 @@
                   </div>
           
                 <!---Previous chat list begins -->
-                  <div class="row sideBar">
-                    <div class="row sideBar-body">
-                      <div class="col-sm-3 col-xs-3 sideBar-avatar">
-                        <div class="avatar-icon">
-                          <img src="https://bootdey.com/img/Content/avatar/avatar1.png">
-                        </div>
-                      </div>
-                      <div class="col-sm-9 col-xs-9 sideBar-main">
-                        <div class="row">
-                          <div class="col-sm-8 col-xs-8 sideBar-name">
-                            <span class="name-meta">Ivica
-                          </span>
-                          </div>
-                          <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
-                            <span class="time-meta pull-right">English A1
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-        
-                    <div class="row sideBar-body">
-                      <div class="col-sm-3 col-xs-3 sideBar-avatar">
-                        <div class="avatar-icon">
-                          <img src="https://bootdey.com/img/Content/avatar/avatar4.png">
-                        </div>
-                      </div>
-                      <div class="col-sm-9 col-xs-9 sideBar-main">
-                        <div class="row">
-                          <div class="col-sm-8 col-xs-8 sideBar-name">
-                            <span class="name-meta">Slavica
-                          </span>
-                          </div>
-                          <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
-                            <span class="time-meta pull-right">French B2
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                  <div id="previous-chat-container" class="row sideBar">
+
                   </div>
                 </div>
                 
@@ -147,7 +58,6 @@
                       </div>
                     </div>
                   </div>
-
 
                   <div class="row compose-sideBar">
                     <div class="row sideBar-body" style="height: fit-content;">

@@ -1,28 +1,24 @@
 
 
-export function get_chats(){
+export async function get_chats(){
     
     let url = `/chats`
 
-    fetch(url)
+    return fetch(url)
         .then((response) => response.json())
-        .then((data)=> {
-            console.log(data)
-            return data
-        })
+        .then((data)=> data)
         .catch((error) => {
-            console.error("Error fetching chats: ", error)
+            console.error(`Error fetching chats: `, error)
         })
 }
 
 
-export function get_chat_messages(id){
+export async function get_chat_messages(id){
     let url = `/chat_messages/${id}`
 
-    fetch(url)
+    return fetch(url)
         .then((response) => response.json())
         .then((data)=>{
-            console.log(data)
             return data
         })
         .catch((error) => {
@@ -32,42 +28,35 @@ export function get_chat_messages(id){
 
 
 
-export function validate_context(user_language, language_level, setting_description){
+export async function validate_context(user_language, language_level, setting_description){
     let url = `/context/${user_language}/${language_level}/${setting_description}`
 
-    fetch(url)
+    return fetch(url)
         .then((response) => response.json())
         .then((data) => {
             console.log(data.content)
-            return data
+            return data.content
         })
 }
 
 
-export function infer_roles(setting) {
+export async function infer_roles(setting) {
     let url = `/roles/${setting}`
 
-    fetch(url)
+    return fetch(url)
         .then((response) => response.json())
         .then((data) => {
-            console.log(data)
             return data
-        })
-        .catch((error) => {
-            console.error("Error getting roles:", error)
         })
 }
 
-export function create_new_chat(setting, GPT_role, user_role, language, language_level){
+export async function create_new_chat(setting, GPT_role, user_role, language, language_level){
     let url = `/new_chat/${setting}/${GPT_role}/${user_role}/${language}/${language_level}`
 
-    fetch(url)
+    return fetch(url)
         .then((response) => response.json())
         .then((data) => {
-            console.log(data)
             return data
         })
-        .catch((error) => {
-            console.error("Error getting roles:", error)
-        })
+
 }

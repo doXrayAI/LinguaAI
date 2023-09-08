@@ -50,7 +50,7 @@ def get_chat_messages(chat_id = '0'):
     
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=3000, debug=True)
+    app.run(host='127.0.0.1', port=3001, debug=True)
 
 
 
