@@ -29,6 +29,6 @@ export function render_previous_chats(chats){
       </div>`
     });
     
-    element.append(chat_string)
+    element.prepend(chat_string)
     console.log("Running render")
 }

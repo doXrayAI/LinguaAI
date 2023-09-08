@@ -43,21 +43,19 @@ window.onload = function () {
       // TODO: add chat to the chat list from session storage
       let chats = JSON.parse(sessionStorage.getItem("chats"))
       console.log('Chats:', chats)
-      chats.unshift(c)
+      chats.push(c)
       sessionStorage.setItem("chats", JSON.stringify(chats))
 
       // TODO: make it the selected chat
       sessionStorage.setItem("selected_chat_id", c.id)
 
-      // TODO: rerender the chat list
-      render_previous_chats(chats)
+      // TODO: render the chat on top of the chat list
+      render_previous_chats([c])
 
       // TODO: rerender the message panel
 
-      // TODO: close side-two panel
-      $(".side-two").css({
-        "left": "0"
-      });
+      // TODO: close side-two panel by cispatching an event
+
 
     });
 };
@@ -74,10 +72,10 @@ $(async function(){
 
   let selected_chat_id = -1
   if(chats.length > 0)
-    selected_chat_id = chats[0].id
+    selected_chat_id = chats.slice(-1).id
   sessionStorage.setItem("selected_chat_id", selected_chat_id)
 
-  render_previous_chats(chats)
+  render_previous_chats(chats.reverse())
 
   // TODO: event listeners on chats -> click -> fetch messages and render them on the right
   // If selected chat (session storage) is different from -1, fetch and render the messages on the right
