@@ -13,10 +13,11 @@ def get_chat_messages(id):
 
 
 def get_chats():
-    return persistence.load_chat_ids_and_context()
+    return persistence.load_chat_ids_and_context()[::-1]
 
     
 def initialize_GPT_chat(setting, GPT_role, user_role, language, language_level):
     b = ChatBot(setting, GPT_role, user_role, language, language_level, init_alternative=4)
     messages = b.get_chat()
+    print(messages)
     return messages

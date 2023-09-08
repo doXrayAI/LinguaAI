@@ -28,11 +28,14 @@ def persist_new_chat(id, language, language_level, setting, GPT_role, user_role,
         }]
     )
     
+    new_chat_return = new_chat.copy(deep=True)
+    
     new_chat['role_object'] = new_chat['role_object'].apply(json.dumps)
     new_chat['chat'] = new_chat['chat'].apply(json.dumps)
     
     new_chat.to_csv(fname, sep=';', mode='a', index=False, header=False)
-    return new_chat.to_dict('records')
+
+    return new_chat_return.to_dict('records')
     
     
 def load_chat_messages(id):

@@ -27,8 +27,7 @@ def assert_context(language, language_level, setting_description):
 def get(setting_description):
     
     roles = role_inference_bot.send((setting_description,))
-    res = {'content': roles}
-    return jsonify(res)
+    return jsonify(roles)
     
     
     

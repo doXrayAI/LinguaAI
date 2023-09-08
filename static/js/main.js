@@ -29,6 +29,7 @@ window.onload = function () {
         })
         .then((r) => {
            console.log('Creating a chat')
+           console.log(r)
            return create_new_chat(setting_description, r.GPT_role, r.user_role, user_language, language_level)
         })
         .catch((error) => {
@@ -39,6 +40,25 @@ window.onload = function () {
       console.log('WE HAVE A CHAT:')
       console.log(c)
 
+      // TODO: add chat to the chat list from session storage
+      let chats = JSON.parse(sessionStorage.getItem("chats"))
+      console.log('Chats:', chats)
+      chats.unshift(c)
+      sessionStorage.setItem("chats", JSON.stringify(chats))
+
+      // TODO: make it the selected chat
+      sessionStorage.setItem("selected_chat_id", c.id)
+
+      // TODO: rerender the chat list
+      render_previous_chats(chats)
+
+      // TODO: rerender the message panel
+
+      // TODO: close side-two panel
+      $(".side-two").css({
+        "left": "0"
+      });
+
     });
 };
 
@@ -48,7 +68,7 @@ $(async function(){
   let chats = await get_chats()
 
   // store fetched chats to session storage
-  sessionStorage.setItem("chats", chats)
+  sessionStorage.setItem("chats", JSON.stringify(chats))
 
   // store selected chat to session storage
 

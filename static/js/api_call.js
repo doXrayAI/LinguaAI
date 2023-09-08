@@ -56,7 +56,7 @@ export async function create_new_chat(setting, GPT_role, user_role, language, la
     return fetch(url)
         .then((response) => response.json())
         .then((data) => {
-            return data
+            return data[0]
         })
 
 }
