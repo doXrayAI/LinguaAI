@@ -19,7 +19,7 @@ export async function get_chat_messages(id){
     return fetch(url)
         .then((response) => response.json())
         .then((data)=>{
-            return data
+            return data[0]
         })
         .catch((error) => {
             console.error(`Error fetching messages for id ${id}: `, error)

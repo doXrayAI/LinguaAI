@@ -1,6 +1,7 @@
 import {show_hide_invalid_setting_message, show_roles } from './validation.js'
 import {get_chat_messages, get_chats, infer_roles, validate_context, create_new_chat} from './api_call.js'
 import { render_previous_chats } from './chat_list.js';
+import { render_current_chat } from './current_chat.js';
 
 let chats = [];
 
@@ -44,22 +45,31 @@ window.onload = function () {
 // Load previous chats and render them
 $(async function(){
 
-  chats = await get_chats()
+  let chats = await get_chats()
 
   // store fetched chats to session storage
   sessionStorage.setItem("chats", chats)
 
   // store selected chat to session storage
 
-  selected_chat_idx = -1
+  let selected_chat_id = -1
   if(chats.length > 0)
-    selected_chat_idx = -1
-  sessionStorage.setItem("selected_chat_idx", selected_chat_idx)
+    selected_chat_id = chats[0].id
+  sessionStorage.setItem("selected_chat_id", selected_chat_id)
 
   render_previous_chats(chats)
 
   // TODO: event listeners on chats -> click -> fetch messages and render them on the right
   // If selected chat (session storage) is different from -1, fetch and render the messages on the right
+
+  if(selected_chat_id != -1){
+    let chat = await get_current_chat_messages()
+
+    console.log('Chat',chat)
+
+    render_current_chat(chat)
+  }
+  
 })
 
 
@@ -79,3 +89,19 @@ $(function(){
     });
 }) 
 
+
+
+async function get_current_chat_messages(){
+
+  let id = sessionStorage.getItem("selected_chat_id")
+  
+  if(id != undefined && id > -1)
+  {
+      let chat = await get_chat_messages(id)
+
+      return chat
+  }
+
+  return undefined
+
+}

@@ -36,7 +36,6 @@ def persist_new_chat(id, language, language_level, setting, GPT_role, user_role,
     
     
 def load_chat_messages(id):
-    
     df = pd.read_csv(fname, sep=';', dtype={'id': str})
     df['role_object'] = df['role_object'].apply(json.loads)
     df['chat'] = df['chat'].apply(json.loads)
