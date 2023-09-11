@@ -3,7 +3,21 @@ import {get_chat_messages, get_chats, infer_roles, validate_context, create_new_
 import { render_previous_chats } from './chat_list.js';
 import { render_current_chat } from './current_chat.js';
 
-let chats = [];
+
+let chat_click_listener = async function(){
+  let id = $(this).attr("data-chatid")
+  console.log('Click id: ', id)
+
+  sessionStorage.setItem("selected_chat_id", id)
+  let chat = await get_chat_messages(id)
+
+  console.log('Clicked messages: ', chat)
+
+  render_current_chat(chat)
+
+
+}
+
 
 // Event listener on submit
 window.onload = function () {
@@ -50,7 +64,7 @@ window.onload = function () {
       sessionStorage.setItem("selected_chat_id", c.id)
 
       // render the chat on top of the chat list
-      render_previous_chats([c])
+      render_previous_chats([c], chat_click_listener)
 
       // rerender the message panel
       render_current_chat(c)
@@ -76,7 +90,7 @@ $(async function(){
   sessionStorage.setItem("selected_chat_id", selected_chat_id)
 
   
-  render_previous_chats(chats.reverse())
+  render_previous_chats(chats.reverse(), chat_click_listener)
 
   console.log('SELECTED CHAT ID: ', selected_chat_id)
 

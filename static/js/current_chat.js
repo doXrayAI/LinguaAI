@@ -38,11 +38,11 @@ export function render_current_chat(chat){
                 `
         });
 
-        conversation.append(messages_string)
+        conversation.html(messages_string)
 
     }
     else{
-        conversation.append('')
+        conversation.html('')
     }
 
 }

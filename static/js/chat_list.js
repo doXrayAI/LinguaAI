@@ -1,14 +1,13 @@
 
-
 // renders previous chats and adds event listeners on click
-export function render_previous_chats(chats){
+export function render_previous_chats(chats, listener_function){
 
     let element = $("#previous-chat-container")
 
     let chat_string = ""
 
     chats.forEach(e => {
-        chat_string += `<div class="row sideBar-body" data-chatid=${e.id}>
+        chat_string += `<div class="row sideBar-body chat-sidebar" data-chatid=${e.id}>
         <div class="col-sm-3 col-xs-3 sideBar-avatar">
           <div class="avatar-icon">
             <img src="https://bootdey.com/img/Content/avatar/avatar1.png">
@@ -34,5 +33,7 @@ export function render_previous_chats(chats){
     
     element.prepend(chat_string)
 
-    $(".sideBar-main")
+    // Add listeners on click 
+    $(".chat-sidebar").on("click", listener_function)
+
 }
