@@ -2,10 +2,12 @@ import persistence
 from src.bots.chatbot import ChatBot
 
 def add_new_chat(setting_description, GPT_role, user_role, language, language_level):
-    id = 111
+    
+    
+    
     chat = [] # TODO get initial GPT chat messages
     
-    return persistence.persist_new_chat(id, language, language_level, setting_description, GPT_role, user_role, chat)
+    return persistence.persist_new_chat(language, language_level, setting_description, GPT_role, user_role, chat)
 
     
 def get_chat_messages(id):
