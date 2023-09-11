@@ -13,7 +13,7 @@ export function render_current_chat(chat){
     {
         // Set heading name
         let heading_name = $(".heading-name-meta")
-        heading_name.append(chat.role_object.GPT_role)
+        heading_name.html(chat.role_object.GPT_role[0].toUpperCase() + chat.role_object.GPT_role.slice(1))
 
 
         // Set messages content

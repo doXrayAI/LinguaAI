@@ -46,16 +46,17 @@ window.onload = function () {
       chats.push(c)
       sessionStorage.setItem("chats", JSON.stringify(chats))
 
-      // TODO: make it the selected chat
+      // make it the selected chat
       sessionStorage.setItem("selected_chat_id", c.id)
 
-      // TODO: render the chat on top of the chat list
+      // render the chat on top of the chat list
       render_previous_chats([c])
 
-      // TODO: rerender the message panel
+      // rerender the message panel
+      render_current_chat(c)
 
-      // TODO: close side-two panel by cispatching an event
-
+      // close side-two panel by dispatching an event
+      $(".newMessage-back").trigger("click")
 
     });
 };
@@ -69,17 +70,21 @@ $(async function(){
   sessionStorage.setItem("chats", JSON.stringify(chats))
 
   // store selected chat to session storage
-
   let selected_chat_id = -1
   if(chats.length > 0)
-    selected_chat_id = chats.slice(-1).id
+    selected_chat_id = chats[chats.length-1].id
   sessionStorage.setItem("selected_chat_id", selected_chat_id)
 
+  
   render_previous_chats(chats.reverse())
 
-  // TODO: event listeners on chats -> click -> fetch messages and render them on the right
-  // If selected chat (session storage) is different from -1, fetch and render the messages on the right
+  console.log('SELECTED CHAT ID: ', selected_chat_id)
 
+  // TODO: event listeners on chats -> click -> fetch messages and render them on the right
+
+
+
+  // If selected chat (session storage) is different from -1, fetch and render the messages on the right
   if(selected_chat_id != -1){
     let chat = await get_current_chat_messages()
 
