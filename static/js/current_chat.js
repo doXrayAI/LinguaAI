@@ -19,11 +19,12 @@ export function render_current_chat(chat){
         // Set messages content
         let messages = chat.chat
         let messages_string = ""
+
         messages.slice(2).forEach(m => {
 
-            let role_class = 'sender'
+            let role_class = 'receiver'
             if(m.role=='user')
-                role_class = 'receiver'   
+                role_class = 'sender'   
 
             messages_string +=
                 `<div class="row message-body">

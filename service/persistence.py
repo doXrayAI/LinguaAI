@@ -41,6 +41,8 @@ def persist_new_chat(language, language_level, setting, GPT_role, user_role, cha
     chats = pd.concat([chats, new_chat])
         
     chats.to_csv(fname, sep=';', index=False, header=True)
+    
+    print(new_chat_return)
 
     return new_chat_return.to_dict('records')
     

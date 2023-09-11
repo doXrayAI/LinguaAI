@@ -1,11 +1,10 @@
 import persistence 
-from src.bots.chatbot import ChatBot
+from src.bots.chatbot import StatelessChatBot
 
 def add_new_chat(setting_description, GPT_role, user_role, language, language_level):
     
-    
-    
-    chat = [] # TODO get initial GPT chat messages
+    # get initial GPT chat messages
+    chat = initialize_GPT_chat(setting_description, GPT_role, user_role, language, language_level) 
     
     return persistence.persist_new_chat(language, language_level, setting_description, GPT_role, user_role, chat)
 
@@ -19,7 +18,6 @@ def get_chats():
 
     
 def initialize_GPT_chat(setting, GPT_role, user_role, language, language_level):
-    b = ChatBot(setting, GPT_role, user_role, language, language_level, init_alternative=4)
-    messages = b.get_chat()
-    print(messages)
+    b = StatelessChatBot()
+    messages = b.init_conversation(setting, GPT_role, user_role, language, language_level, 4)
     return messages

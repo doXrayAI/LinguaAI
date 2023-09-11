@@ -94,9 +94,6 @@ $(async function(){
 
   console.log('SELECTED CHAT ID: ', selected_chat_id)
 
-  // TODO: event listeners on chats -> click -> fetch messages and render them on the right
-
-
 
   // If selected chat (session storage) is different from -1, fetch and render the messages on the right
   if(selected_chat_id != -1){
