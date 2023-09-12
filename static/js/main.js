@@ -1,10 +1,10 @@
 import {show_hide_invalid_setting_message, show_roles } from './validation.js'
-import {get_chat_messages, get_chats, infer_roles, validate_context, create_new_chat} from './api_call.js'
+import {get_chat_messages, get_chats, infer_roles, validate_context, create_new_chat, send_new_message} from './api_call.js'
 import { render_previous_chats } from './chat_list.js';
 import { render_current_chat } from './current_chat.js';
 
 
-let chat_click_listener = async function(){
+export async function chat_click_listener(){
   let id = $(this).attr("data-chatid")
   console.log('Click id: ', id)
 
@@ -14,10 +14,28 @@ let chat_click_listener = async function(){
   console.log('Clicked messages: ', chat)
 
   render_current_chat(chat)
-
-
 }
 
+
+export async function send_message(){
+
+  let message_content = $("#comment").val().trim()
+
+  console.log("MESSAGE CONTENT ", message_content)
+
+  if(message_content == '')
+      return
+
+  let id = sessionStorage.getItem("selected_chat_id")
+
+  // send message to api
+  let new_messages = await send_new_message(message_content, id)
+
+
+  // TODO append messages to chat (render)
+  // TODO clear the message
+
+}
 
 // Event listener on submit
 window.onload = function () {
@@ -92,20 +110,20 @@ $(async function(){
   
   render_previous_chats(chats.reverse(), chat_click_listener)
 
-  console.log('SELECTED CHAT ID: ', selected_chat_id)
-
-
   // If selected chat (session storage) is different from -1, fetch and render the messages on the right
   if(selected_chat_id != -1){
     let chat = await get_current_chat_messages()
-
-    console.log('Chat',chat)
 
     render_current_chat(chat)
   }
   
 })
 
+
+// add listener on message send button
+$(function(){
+  $("#reply-send").click(send_message);
+})
 
 
 

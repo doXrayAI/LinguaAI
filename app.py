@@ -45,7 +45,15 @@ def get_chats():
 @app.route('/chat_messages/<chat_id>')
 def get_chat_messages(chat_id = '0'):
     return jsonify(services.get_chat_messages(chat_id))
-    
+
+
+
+@app.route('/new_message/<message>/<chat_id>')
+def new_message(message, chat_id=0):
+    print(message, chat_id)
+    rez = services.new_message(message, chat_id)
+    print(rez)
+    return jsonify(rez)
     
 
 if __name__ == '__main__':

@@ -7,15 +7,15 @@ fname = 'db/messages.csv'
 
 def load_chat_ids_and_context(fname=fname):
     
-    chats = pd.read_csv(fname, sep=';')
+    chats = pd.read_csv(fname, sep=';', dtype={'id': str})
     chats['role_object'] = chats['role_object'].apply(json.loads)
     
-    return chats[['id','role_object', 'language', 'language_level' ]].to_dict('records')
+    return chats[['id','role_object', 'language', 'language_level' ]]
 
 
 def persist_new_chat(language, language_level, setting, GPT_role, user_role, chat):
     
-    chats = pd.read_csv(fname, sep=';')
+    chats = pd.read_csv(fname, sep=';', dtype={'id': str})
     
     id = len(chats)
     
@@ -42,9 +42,7 @@ def persist_new_chat(language, language_level, setting, GPT_role, user_role, cha
         
     chats.to_csv(fname, sep=';', index=False, header=True)
     
-    print(new_chat_return)
-
-    return new_chat_return.to_dict('records')
+    return new_chat_return
     
     
 def load_chat_messages(id):
@@ -52,4 +50,13 @@ def load_chat_messages(id):
     df['role_object'] = df['role_object'].apply(json.loads)
     df['chat'] = df['chat'].apply(json.loads)
 
-    return df[df['id']== id].to_dict('records')
+    a = df[df['id']== id]
+    return a
+
+
+def persist_updated_chat(chat_id, updated_chat):
+        
+    chats = pd.read_csv(fname, sep=';', dtype={'id': str})
+    chats.loc[int(chat_id), 'chat'] = json.dumps(updated_chat)    
+
+    chats.to_csv(fname, sep=';', index=False, header=True)

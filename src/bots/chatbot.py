@@ -4,6 +4,8 @@ from utils import load_template, load_cefr
 from src.single_run_thread import StatelessThread
 from src.parameters import default_system_prompt
 from src.templates.alternatives.chatbot_initiation import chatbot_initiation_alternatives
+from copy import deepcopy
+
 
 class ChatBot(Bot):
     '''A generic chatbot'''
@@ -64,10 +66,11 @@ class StatelessChatBot(Bot):
         return messages
         
     def send(self, messages, new_message):
+
         messages = deepcopy(messages)
         messages.append({'role': 'user', 'content': new_message})
         response = self._thread.send(messages)
-        messages.append(response)
+        messages.append({'role': response['role'], 'content': response['content']})
         
         return messages
         
