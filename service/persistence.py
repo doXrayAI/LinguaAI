@@ -50,8 +50,8 @@ def load_chat_messages(id):
     df['role_object'] = df['role_object'].apply(json.loads)
     df['chat'] = df['chat'].apply(json.loads)
 
-    a = df[df['id']== id]
-    return a
+    return df[df['id']== id]
+    
 
 
 def persist_updated_chat(chat_id, updated_chat):

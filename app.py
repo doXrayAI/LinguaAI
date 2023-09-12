@@ -25,7 +25,6 @@ def assert_context(language, language_level, setting_description):
 
 @app.route('/roles/<setting_description>')
 def get(setting_description):
-    
     roles = role_inference_bot.send((setting_description,))
     return jsonify(roles)
     

@@ -6,11 +6,11 @@ def add_new_chat(setting_description, GPT_role, user_role, language, language_le
     # get initial GPT chat messages
     chat = initialize_GPT_chat(setting_description, GPT_role, user_role, language, language_level) 
     
-    return persistence.persist_new_chat(language, language_level, setting_description, GPT_role, user_role, chat).to_dict('records')
+    return persistence.persist_new_chat(language, language_level, setting_description, GPT_role, user_role, chat).to_dict('records')[0]
 
     
 def get_chat_messages(id):
-    return persistence.load_chat_messages(id).to_dict('records')
+    return persistence.load_chat_messages(id).to_dict('records')[0]
 
 
 def get_chats():
