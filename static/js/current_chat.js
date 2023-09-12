@@ -44,6 +44,8 @@ export function render_current_chat(chat){
         conversation.html('')
     }
 
+    conversation.scrollTop(conversation.prop("scrollHeight"));
+
 }
 
 
