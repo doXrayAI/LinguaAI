@@ -60,3 +60,9 @@ def persist_updated_chat(chat_id, updated_chat):
     chats.loc[int(chat_id), 'chat'] = json.dumps(updated_chat)    
 
     chats.to_csv(fname, sep=';', index=False, header=True)
+    
+    chats['role_object'] = chats['role_object'].apply(json.loads)
+    chats['chat'] = chats['chat'].apply(json.loads)
+    
+    return chats[chats['id']== chat_id]
+    

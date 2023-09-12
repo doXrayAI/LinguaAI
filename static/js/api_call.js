@@ -19,7 +19,6 @@ export async function get_chat_messages(id){
     return fetch(url)
         .then((response) => response.json())
         .then((data)=>{
-            console.log("DATAAA: ", data)
             return data[0]
         })
         .catch((error) => {
@@ -64,7 +63,7 @@ export async function create_new_chat(setting, GPT_role, user_role, language, la
 
 
 export async function send_new_message(message, id){
-    let url = `/new_message/${message}/${id}`
+    let url = `/new_message/${encodeURIComponent(message)}/${encodeURIComponent(id)}`
 
     return fetch(url)
         .then((response) => response.json())

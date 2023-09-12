@@ -50,14 +50,11 @@ def get_chat_messages(chat_id = '0'):
 
 @app.route('/new_message/<message>/<chat_id>')
 def new_message(message, chat_id=0):
-    print(message, chat_id)
-    rez = services.new_message(message, chat_id)
-    print(rez)
-    return jsonify(rez)
+    return jsonify(services.new_message(message, chat_id))
     
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=3002, debug=True)
+    app.run(host='127.0.0.1', port=3001, debug=True)
 
 
 

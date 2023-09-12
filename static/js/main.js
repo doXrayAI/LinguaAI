@@ -6,12 +6,8 @@ import { render_current_chat } from './current_chat.js';
 
 export async function chat_click_listener(){
   let id = $(this).attr("data-chatid")
-  console.log('Click id: ', id)
-
   sessionStorage.setItem("selected_chat_id", id)
   let chat = await get_chat_messages(id)
-
-  console.log('Clicked messages: ', chat)
 
   render_current_chat(chat)
 }
@@ -21,19 +17,20 @@ export async function send_message(){
 
   let message_content = $("#comment").val().trim()
 
-  console.log("MESSAGE CONTENT ", message_content)
-
   if(message_content == '')
       return
 
   let id = sessionStorage.getItem("selected_chat_id")
 
   // send message to api
-  let new_messages = await send_new_message(message_content, id)
+  let chat = await send_new_message(message_content, id)
+  // render chat
+  render_current_chat(chat)
 
+  // TODO scroll to the bottom
 
-  // TODO append messages to chat (render)
-  // TODO clear the message
+  // clear the message from input
+  $("#comment").val("")
 
 }
 
@@ -60,8 +57,6 @@ window.onload = function () {
             }
         })
         .then((r) => {
-           console.log('Creating a chat')
-           console.log(r)
            return create_new_chat(setting_description, r.GPT_role, r.user_role, user_language, language_level)
         })
         .catch((error) => {
@@ -69,12 +64,8 @@ window.onload = function () {
         })
         
 
-      console.log('WE HAVE A CHAT:')
-      console.log(c)
-
       // TODO: add chat to the chat list from session storage
       let chats = JSON.parse(sessionStorage.getItem("chats"))
-      console.log('Chats:', chats)
       chats.push(c)
       sessionStorage.setItem("chats", JSON.stringify(chats))
 

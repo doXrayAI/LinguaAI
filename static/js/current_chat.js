@@ -4,8 +4,6 @@ export function render_current_chat(chat){
 
 
     let id = sessionStorage.getItem("selected_chat_id")
-
-    console.log("ID: ", id)
     
     let conversation = $("#conversation")
 

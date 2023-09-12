@@ -30,6 +30,7 @@ def new_message(message, chat_id):
             
     new_messages = b.send(previous_messages, message)
     
-    persistence.persist_updated_chat(chat_id, new_messages)
+    return persistence.persist_updated_chat(chat_id, new_messages).to_dict('records')[0]
+
     
-    return new_messages
+    
