@@ -16,7 +16,6 @@ def load_chat_ids_and_context(fname=fname):
 def persist_new_chat(language, language_level, setting, GPT_role, user_role, chat):
     
     chats = pd.read_csv(fname, sep=';', dtype={'id': str})
-    
     id = len(chats)
     
     role_object = {'setting': setting,
@@ -39,7 +38,6 @@ def persist_new_chat(language, language_level, setting, GPT_role, user_role, cha
     new_chat['chat'] = new_chat['chat'].apply(json.dumps)
     
     chats = pd.concat([chats, new_chat])
-        
     chats.to_csv(fname, sep=';', index=False, header=True)
     
     return new_chat_return

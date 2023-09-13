@@ -1,13 +1,12 @@
-import {show_hide_invalid_setting_message, show_roles } from './validation.js'
+import {show_hide_invalid_setting_message, render_previous_chats, render_current_chat } from './render.js'
 import {get_chat_messages, get_chats, infer_roles, validate_context, create_new_chat, send_new_message} from './api_call.js'
-import { render_previous_chats } from './chat_list.js';
-import { render_current_chat } from './current_chat.js';
+
 
 
 export async function chat_click_listener(){
-  let id = $(this).attr("data-chatid")
-  sessionStorage.setItem("selected_chat_id", id)
-  let chat = await get_chat_messages(id)
+  let chat_id = $(this).attr("data-chatid")
+  sessionStorage.setItem("selected_chat_id", chat_id)
+  let chat = await get_chat_messages(chat_id)
 
   render_current_chat(chat)
 }
@@ -17,24 +16,23 @@ export async function send_message(){
 
   let message_content = $("#comment").val().trim()
 
-  if(message_content == '')
+  if(message_content == '') // return if there is no message content
       return
 
-  let id = sessionStorage.getItem("selected_chat_id")
+  let chat_id = sessionStorage.getItem("selected_chat_id")
 
   // send message to api
-  let chat = await send_new_message(message_content, id)
+  let chat = await send_new_message(message_content, chat_id)
+
   // render chat
   render_current_chat(chat)
-
-  // TODO scroll to the bottom
 
   // clear the message from input
   $("#comment").val("")
 
 }
 
-// Event listener on submit
+// Event listener on new chat submit
 window.onload = function () {
     show_hide_invalid_setting_message(true);
 
@@ -64,7 +62,7 @@ window.onload = function () {
         })
         
 
-      // TODO: add chat to the chat list from session storage
+      // add chat to the chat list from session storage
       let chats = JSON.parse(sessionStorage.getItem("chats"))
       chats.push(c)
       sessionStorage.setItem("chats", JSON.stringify(chats))
@@ -72,19 +70,21 @@ window.onload = function () {
       // make it the selected chat
       sessionStorage.setItem("selected_chat_id", c.id)
 
-      // render the chat on top of the chat list
+      // render the chat on top of the sidebar chat list
       render_previous_chats([c], chat_click_listener)
 
-      // rerender the message panel
+      // rerender the current chat messages
       render_current_chat(c)
 
-      // close side-two panel by dispatching an event
+      // close side-two panel
       $(".newMessage-back").trigger("click")
 
     });
 };
 
-// Load previous chats and render them
+
+
+// Load previous chats and render them in sidebar
 $(async function(){
 
   let chats = await get_chats()
@@ -99,16 +99,13 @@ $(async function(){
     selected_chat_id = chats[chats.length-1].id
   sessionStorage.setItem("selected_chat_id", selected_chat_id)
 
-  
   render_previous_chats(chats.reverse(), chat_click_listener)
 
-  // If selected chat (session storage) is different from -1, fetch and render the messages on the right
+  // If selected chat is different from -1, fetch and render the messages on the right
   if(selected_chat_id != -1){
     let chat = await get_current_chat_messages()
-
     render_current_chat(chat)
   }
-  
 })
 
 
@@ -116,7 +113,6 @@ $(async function(){
 $(function(){
   $("#reply-send").click(send_message);
 })
-
 
 
 $(function(){
@@ -142,10 +138,7 @@ async function get_current_chat_messages(){
   if(id != undefined && id > -1)
   {
       let chat = await get_chat_messages(id)
-
       return chat
   }
-
-  return undefined
-
+  return 
 }
