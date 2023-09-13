@@ -4,7 +4,7 @@ import json
 
 fname = 'db/messages.csv'
 
-
+# Returns persisted chat contexts
 def load_chat_ids_and_context(fname=fname):
     
     chats = pd.read_csv(fname, sep=';', dtype={'id': str})
@@ -12,8 +12,9 @@ def load_chat_ids_and_context(fname=fname):
     
     return chats[['id','role_object', 'language', 'language_level' ]]
 
-
-def persist_new_chat(language, language_level, setting, GPT_role, user_role, chat):
+# Perists new chat on disk
+# Returns the new chat object
+def persist_new_chat(language, language_level, setting, GPT_role, user_role, chat_messages):
     
     chats = pd.read_csv(fname, sep=';', dtype={'id': str})
     id = len(chats)
@@ -28,21 +29,23 @@ def persist_new_chat(language, language_level, setting, GPT_role, user_role, cha
         'language': language,
         'language_level': language_level,
         'role_object' : role_object,
-        'chat' : chat
+        'chat' : chat_messages
         }]
     )
     
     new_chat_return = new_chat.copy(deep=True)
-    
     new_chat['role_object'] = new_chat['role_object'].apply(json.dumps)
     new_chat['chat'] = new_chat['chat'].apply(json.dumps)
     
     chats = pd.concat([chats, new_chat])
+    
     chats.to_csv(fname, sep=';', index=False, header=True)
     
     return new_chat_return
+
+
     
-    
+# Returns persisted chat object and messages with a given id    
 def load_chat_messages(id):
     df = pd.read_csv(fname, sep=';', dtype={'id': str})
     df['role_object'] = df['role_object'].apply(json.loads)
@@ -51,11 +54,12 @@ def load_chat_messages(id):
     return df[df['id']== id]
     
 
-
-def persist_updated_chat(chat_id, updated_chat):
+# Persists updated chat messages 
+# Returns the updated chat object
+def persist_updated_chat(chat_id, updated_chat_messages):
         
     chats = pd.read_csv(fname, sep=';', dtype={'id': str})
-    chats.loc[int(chat_id), 'chat'] = json.dumps(updated_chat)    
+    chats.loc[int(chat_id), 'chat'] = json.dumps(updated_chat_messages)    
 
     chats.to_csv(fname, sep=';', index=False, header=True)
     
