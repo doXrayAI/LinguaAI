@@ -62,17 +62,12 @@ class StatelessChatBot(Bot):
         args = (setting_description, language, user_role, GPT_role, language_level, level_description)
         prompt = self._prompt_builder.add_template(template, args).build()
         messages = [ {'role': 'system', 'content': default_system_prompt}, { 'role': 'user', 'content' : prompt},]
-        messages.append( self._thread.send(messages))
-        return messages
+        initial_message = self._thread.send(messages)
+        return (messages, initial_message)
         
-    def send(self, messages, new_message):
-
-        messages = deepcopy(messages)
-        messages.append({'role': 'user', 'content': new_message})
-        response = self._thread.send(messages)
-        messages.append({'role': response['role'], 'content': response['content']})
-        
-        return messages
+    def send(self, messages):
+        response = self._thread.send(messages)  
+        return response
         
         
         

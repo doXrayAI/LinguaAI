@@ -39,5 +39,4 @@ class StatelessThread:
         presence_penalty=params.presence_penalty,
         stop=params.stop)
         
-        return response.choices[0].message
-        
+        return response.choices[0].message.content        
