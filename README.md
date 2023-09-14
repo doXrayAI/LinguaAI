@@ -1,92 +1,113 @@
 # 2023-languagelearning
 
+## Project description
+
+The Language Learning project provides a chatbot platform aimed at improving users' language skills. The main goal is to offer the user a chatbot interlocutor tailored for his preferred language and proficiency level. For the fully customizable learning experience the user can choose the situation in which he wishes to converse.
+
+## Running locally
+To run the application locally, after cloning the repository, the following has to be executed:
+
+- installing the requirements in the virtual environment by running ```$ pip install -r requirements.txt```
+- setting up OpenAI API key as an environment variable by running ```$ export OPENAI_API_KEY = your_key ```
+
+### Customization
+
+Current project uses the GPT-3.5-turbo model with the following parameters:
+
+- temperature = 0.7
+- max_tokens = 800
+- top_p = 0.95
+- frequency_penalty = 0
+- presence_penalty = 0
+- stop = None
+
+If you wish to change the model used or the parameters, you can do so by altering the ```default_parameters``` variable in the ```src/parameters.py``` file. If you wish to change the prompt templates for a bot, add a new prompt template to template list that can be found in folder ```src/templates``` and instantiate the respective bot with the template index as an argument (see respective bot implementation and constructor arguments).
+
+The application is available as a CLI app and as a web app.
 
 
-## Getting started
+### CLI application
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+To run the CLI app, run ```$ python chat.py```
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+The CLI app supports a having a single unpersisted chat, based on the user's input of the. Its primary function is to test new functionalities of the chatbot and auxiliary refinement bots.
 
-## Add your files
+### Flask web application
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+To run the web app, run ```$ python app.py```. The app starts on port 3000. The port can be modified in the ```app.py``` file.
 
-```
-cd existing_repo
-git remote add origin https://gitlab.com/doxray/garage/internships/2023-languagelearning.git
-git branch -M main
-git push -uf origin main
-```
+Features available to users from thw web app are:
 
-## Integrate with your tools
+1. creating and persisting a new chat by choosing a language, language proficiency level and setting the dialogue should be carried out in,
+2. fetching and browsing previously created dialogues,
+3. sending and persisting new messages to created dialogues.
 
-- [ ] [Set up project integrations](https://gitlab.com/doxray/garage/internships/2023-languagelearning/-/settings/integrations)
+## Implementation
 
-## Collaborate with your team
+The chatbot is implemented using prompt engineering techinques. The process of starting and conducting the dialogue consists of several parts:
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+1. Setting description assessment
+2. Role inference
+3. Initial GPT response generation
+4. Refinement of the initial GPT response in the refinement pipeline
 
-## Test and Deploy
+### Setting assessment
 
-Use the built-in continuous integration in GitLab.
+The setting user can describe is completely arbitrary and therefore, the assessment of user input is performed using the class ```InputValidationBot```. The aim is to assess that the user input falls into one of the three categories: a place, situation or activity.
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+If the setting description passes the assessment, the role inference process begins. For instance, the setting "In a restaurant" is expected to pass the assessment.
 
-***
+If the setting description doesn't pass the assessment, a suitable message is desplayed to the user and he needs to repeat the setting description. Settings "What do you want?" or "12HHwas" are not expected to pass the assessment.
 
-# Editing this README
+### Role inference
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+To be able to carry out the dialogue, the implementation needs to infer two roles, one assigned to GPT and other to user, from the valid setting description. For instance, a sensible role inference process for the setting "In a restaurant" would assign the role "Waiter" to GPT and the role "Customer" to user. 
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+### Refinement pipeline
 
-## Name
-Choose a self-explaining name for your project.
+The refinement pipeline consists of refinement bots:
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+1. RoleFitnessBot - improving the role fitness of the input sentence
+2. LanguageLevelBot - improving the language level to match the chosen level
+3. LanguageLevelSimplificationBot - further simplifying the sentence (only for A1 and A2 levels of proficiency)
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+Visualisation of the previously described process is available as a flow diagram in ```./diagrams``` folder.
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+The implementation offers a stateful and stateless implementation of the same component.
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+### Stateful components
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+- Thread - API wrapper class that keeps the record of previous messages
+- ChatBot - sends messages through the stateful Thread
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+The CLI application is based on stateful components.
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+### Stateless components
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+- SingleRunThread - API wrapper class that sends a single prompt string, the record of messages is not kept (used for refinement bots)
+- StatelessThread - API wrapper class that sends a list of messages to the API, the list is not persisted
+- StatelessChatBot - sends messages through the StatelessThread
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+The web application is based on stateless components.
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+## Features in progress
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+1. SummarizationBot
+   1. Problem: The API has a limit on number at tokens that can, in case of lenghty dialogue, be exceeded.
+   2. Solution proposition: Periodically summarize previous dialogue and use the summary and a small window of most recent messages to generate new responses.
+2. UserEngagementBot
+   1. Problem: The model generates close ended responses, making it hard for the user to produce an answer.
+   2. Solution proposition: Refine the responses to incite more user engagement and create open ended situations.
+3. RoleFitnessLanguageLevelBot
+   1. Problem: Making several API calls takes a significant toll on the latency of the chatbot responses
+   2. Solution proposition: Integrate more refinements into a single refinement and therefore, into a single API call.
 
-## License
-For open source projects, say how it is licensed.
+## Future improvements
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+1. Text-to-speech and speech-to-text integration
+2. Authentication and authorization
+3. Improving on persistence
+4. User profile
+5. User improvement suggestions (profile analysis)
+6. User feedback
+7. Reducing the number of API calls

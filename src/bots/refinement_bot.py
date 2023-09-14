@@ -37,7 +37,7 @@ class LanguageLevelBot(Bot):
 class LanguageLevelSimplificationBot(LanguageLevelBot):
     
     def __init__(self, language_level, language):
-        super().__init__(language_level, language, alternative=3)
+        super().__init__(language_level, language, alternative=4) # alternative 4 is for language simplification
         self.__language_level = language_level
         
     def send(self, args, history):

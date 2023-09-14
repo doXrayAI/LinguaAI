@@ -68,8 +68,6 @@ def chat_initiation(summarize= False):
             if length > 0 and length % summary_window == 1:
                 chat_string = operator.get_dialogue_string(summary_window)
                 new_summary = summarization_bot.send(summary, chat_string)
-                print('SUMMARY: ' + new_summary)
-                print('SUMMARY LEN: ' + str(len(new_summary)))
                 summary = new_summary
         
 
