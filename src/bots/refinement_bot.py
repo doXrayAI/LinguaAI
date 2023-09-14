@@ -7,16 +7,20 @@ from src.templates.alternatives.language_level_bot import language_level_refinem
 class LanguageLevelBot(Bot):
     '''Refining the input to match given language level'''
     
-    def __init__(self, language_level, alternative):
+    def __init__(self, language_level, language, alternative):
         super().__init__()
         self.__template = dict()
 
         self.__template = language_level_refinement_alternatives[alternative]
         language_level_description = load_cefr(language_level)
         
-        examples = '\n'.join(language_level_examples[language_level])
+        # The examples functionality is currently only supported for English
+        examples = ''
+        if language == 'English':
+            examples += ' Examples of {0} language level sentences in {1}: '.format(language_level, language)
+            examples += '\n'.join(language_level_examples[language_level])
         
-        self._prompt_builder.add_template(self.__template, (language_level, language_level_description, examples))
+        self._prompt_builder.add_template(self.__template, (language_level, language_level_description, examples, language))
         
         
     def send(self, args, history) :
@@ -32,8 +36,8 @@ class LanguageLevelBot(Bot):
     
 class LanguageLevelSimplificationBot(LanguageLevelBot):
     
-    def __init__(self, language_level):
-        super().__init__(language_level, alternative=4)
+    def __init__(self, language_level, language):
+        super().__init__(language_level, language, alternative=3)
         self.__language_level = language_level
         
     def send(self, args, history):

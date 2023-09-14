@@ -4,7 +4,7 @@ from prompt_builder import PromptBuilder
 from parameters import default_parameters
 
 
-
+# Sends a single string prompt to the ChatCompletion API
 class SingleRunThread:
     '''Class encapsulating API call to GPT. Can define multiple assistant and user messages.'''
     
@@ -24,7 +24,7 @@ class SingleRunThread:
         return response.choices[0].message.content
     
     
-    
+# Sends a list of messages to the ChatCompletion API    
 class StatelessThread:
     
     def send(self, messages, params=default_parameters ) -> str:

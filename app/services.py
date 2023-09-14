@@ -22,7 +22,7 @@ def initialize_GPT_chat(setting, GPT_role, user_role, language, language_level):
     bot = StatelessChatBot()
     messages, initial_response = bot.init_conversation(setting, GPT_role, user_role, language, language_level, 4)
     
-    bot_list = [RoleFitnessBot(GPT_role, user_role, setting, alternative=4), LanguageLevelBot(language_level, alternative=3), LanguageLevelSimplificationBot(language_level) ]    
+    bot_list = [RoleFitnessBot(GPT_role, user_role, setting, alternative=4), LanguageLevelBot(language_level,language, alternative=3), LanguageLevelSimplificationBot(language_level, language) ]    
     pipeline = make_bot_pipeline([b.send for b in bot_list])
     
     refined_initial_response, _ = pipeline(initial_response, [])
@@ -38,7 +38,7 @@ def new_message(message, chat_id):
     roles = chat['role_object']
             
     response = bot.send(messages)
-    bot_list = [RoleFitnessBot(roles['GPT_role'], roles['user_role'], roles['setting'], alternative=4), LanguageLevelBot(chat['language_level'], alternative=3), LanguageLevelSimplificationBot(chat['language_level']) ]    
+    bot_list = [RoleFitnessBot(roles['GPT_role'], roles['user_role'], roles['setting'], alternative=4), LanguageLevelBot(chat['language_level'], chat['language'], alternative=3), LanguageLevelSimplificationBot(chat['language_level'], chat['language']) ]    
     pipeline = make_bot_pipeline([b.send for b in bot_list])
         
     refined_response, _ = pipeline(response, [])
