@@ -9,7 +9,7 @@ The Language Learning project provides a chatbot platform aimed at improving use
 To run the application locally, after cloning the repository, the following has to be executed:
 
 - installing the requirements in the virtual environment by running ```$ pip install -r requirements.txt```
-- setting up OpenAI API key as an environment variable by running ```$ export OPENAI_API_KEY = your_key ```
+- setting up OpenAI API key by running ```$ echo OPENAI_API_KEY = \'your_key\' > keys.py```
 
 ### Customization
 
