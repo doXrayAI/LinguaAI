@@ -5,6 +5,7 @@
 The Language Learning project provides a chatbot platform aimed at improving users' language skills. The main goal is to offer the user a chatbot interlocutor tailored for his preferred language and proficiency level. For the fully customizable learning experience the user can choose the situation in which he wishes to converse.
 
 ## Running locally
+
 To run the application locally, after cloning the repository, the following has to be executed:
 
 - installing the requirements in the virtual environment by running ```$ pip install -r requirements.txt```
@@ -41,6 +42,8 @@ Features available to users from thw web app are:
 1. creating and persisting a new chat by choosing a language, language proficiency level and setting the dialogue should be carried out in,
 2. fetching and browsing previously created dialogues,
 3. sending and persisting new messages to created dialogues.
+
+The chats are persisted in a CSV file ```db/messages.csv```.
 
 ## Implementation
 

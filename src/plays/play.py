@@ -10,8 +10,10 @@ import openai
 openai.api_key = keys.OPENAI_API_KEY
 
 
-
 def play(setting, GPT_role, user_role, language, language_level, pipeline, n_turns=10):
+    '''Conducts a dialogue between two chatbots
+    The argument pipeline is applied to the first chatbot. An identity pipeline is applied to the second bot.
+    The argument n_turns defines the number of turns bots take.'''
 
     chatbot_1 = ChatBot(setting, GPT_role, user_role, language, language_level)
         

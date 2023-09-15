@@ -5,6 +5,8 @@ from src.single_run_thread import SingleRunThread
 from src.templates.alternatives.summarization import summarization_prompt_templates
 
 class SummarizationBot(Bot):
+    '''Bot producing a summary based on a previous summary 
+    and a string concatenation of new messages from '''
     
     def __init__(self, prompt_alternative=0, parameters=default_parameters):
         super().__init__()

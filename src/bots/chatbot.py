@@ -8,7 +8,7 @@ from copy import deepcopy
 
 
 class ChatBot(Bot):
-    '''A generic chatbot'''
+    '''A stateful chatbot'''
     
     def __init__(self, setting_description, GPT_role, user_role, language='English', language_level='A1', init_alternative=1) -> None:
         super().__init__(thread=Thread())
@@ -49,12 +49,16 @@ class ChatBot(Bot):
     
     
 class StatelessChatBot(Bot):
+    '''A stateless chatbot, sends messages through the stateless thread'''
     
     def __init__(self):
         super().__init__(thread=StatelessThread() )
         
     
     def init_conversation(self, setting_description, GPT_role, user_role, language='English', language_level='A1', init_alternative=1):
+        '''Initializes the conversation with the model, 
+        sends initial setup messages and receives the inital GPT response in the given role and other dialogue context parameters.
+        Returns the list of setup messages and the model response string'''
         
         template = chatbot_initiation_alternatives[init_alternative]
         level_description = load_cefr(language_level)
@@ -66,6 +70,8 @@ class StatelessChatBot(Bot):
         return (messages, initial_message)
         
     def send(self, messages):
+        ''' Sends a list of messages to the thread
+        Returns the model response string'''
         response = self._thread.send(messages)  
         return response
         

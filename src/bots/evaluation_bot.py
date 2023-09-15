@@ -6,7 +6,7 @@ from src.templates.alternatives.evaluation_prompts import role_fitness_prompts, 
 from src.utils import load_cefr
 
 class RoleFitnessEvaluationBot:
-    
+    '''Evaluates the role fitness of a message from a dialogue on a scale from 1 to 5'''
     def __init__(self, prompt_alternative=0):
         self.__prompt_builder = PromptBuilder()
         self.__thread = SingleRunThread()
@@ -24,6 +24,7 @@ class RoleFitnessEvaluationBot:
         
     
 class LanguageLevelEvaluationBot:
+    '''Evaluates the language level match of as message from a dialogue on a scale from 1 to 3'''
     
     def __init__(self, prompt_alternative=0, level_description_fname='../../templates/language_levels_cefr.json'):
         self.__prompt_builder = PromptBuilder()
@@ -37,7 +38,7 @@ class LanguageLevelEvaluationBot:
         
         level_example_string = '\n'.join(language_level_examples[language_level])
         level_antiexample_string = '\n'.join(language_level_antiexamples[language_level])
-        #ratings_examples = '\n'.join(language_level_rating_examples[language_level])
+
         ratings_examples_with_reasoning= '\n'.join(language_level_rating_examples_with_reasoning[language_level]) 
         
         self.__prompt_builder.reset()

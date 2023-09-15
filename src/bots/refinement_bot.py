@@ -35,6 +35,7 @@ class LanguageLevelBot(Bot):
     
     
 class LanguageLevelSimplificationBot(LanguageLevelBot):
+    '''Refinement bot simplifying the language level. Only triggers for A1 and A2 language levels'''
     
     def __init__(self, language_level, language):
         super().__init__(language_level, language, alternative=4) # alternative 4 is for language simplification
@@ -48,7 +49,7 @@ class LanguageLevelSimplificationBot(LanguageLevelBot):
         return args, history
     
 class RoleFitnessBot(Bot):
-    '''Refining the input to match the GPT and user role'''
+    '''Refining the input to match the role'''
     
     def __init__(self, GPT_role, user_role, setting, alternative=0):
         super().__init__()

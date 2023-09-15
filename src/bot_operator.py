@@ -1,7 +1,7 @@
 from src.bots.chatbot import ChatBot
 
 class ChatBotOperator:
-    '''Operates and synchronises a chatbot and auxiliary bots in a pipeline'''
+    '''Operates and synchronises a stateful chatbot and auxiliary bots in a pipeline'''
     
     def __init__(self, chatbot, pipeline) -> None:
         self.__chatbot = chatbot
@@ -21,9 +21,7 @@ class ChatBotOperator:
         refined_response, history = self.__refinement_pipeline(response['content'], [response['content'],])
         
         self.__chatbot.add_message(refined_response, role='assistant')
-        
-        #print('HISTORY:' + str(history))
-        
+                
         return refined_response
     
     
@@ -37,9 +35,7 @@ class ChatBotOperator:
         refined_response, history = self.__refinement_pipeline(response['content'], [response['content'],])
                 
         self.__chatbot.add_message(refined_response, role='assistant')
-        
-        #print('HISTORY:' + str(history))
-        
+                
         return refined_response
     
     

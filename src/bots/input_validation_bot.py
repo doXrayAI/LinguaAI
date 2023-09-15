@@ -10,6 +10,9 @@ class InputValidationBot(Bot):
         
         
     def send(self, args) :
+        '''Sends the formatted input validation prompt to the thread.
+        args: tuple - containing the setting description string
+        output: boolean - validation result'''
         prompt = self._prompt_builder.add_template(self.__template, args).build()
         self._prompt_builder.reset()
                 

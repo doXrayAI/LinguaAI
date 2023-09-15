@@ -4,7 +4,7 @@ from prompt_builder import PromptBuilder
 from single_run_thread import SingleRunThread
 
 class Bot(ABC):
-    '''Generic abstract bot, holds a PromptBuilder and a Thread or SingleRunThread'''
+    '''Generic abstract bot, holds a PromptBuilder and a Thread, SingleRunThread or StatelessThread'''
     
     def __init__(self, thread = SingleRunThread()) -> None:
         self._prompt_builder = PromptBuilder()
