@@ -33,9 +33,11 @@ def new_message(message, chat_id):
     bot = StatelessChatBot()
     chat = persistence.load_chat_messages(chat_id).to_dict('records')[0]
     messages = chat['chat']
-    messages.append({'role': 'user', 'content': message})
 
     roles = chat['role_object']
+    
+    messages.append({'role': 'user', 'content': roles['user_role'] + ': ' + message})
+
             
     response = bot.send(messages)
     bot_list = [RoleFitnessBot(roles['GPT_role'], roles['user_role'], roles['setting'], alternative=4), LanguageLevelBot(chat['language_level'], chat['language'], alternative=3), LanguageLevelSimplificationBot(chat['language_level'], chat['language']) ]    
