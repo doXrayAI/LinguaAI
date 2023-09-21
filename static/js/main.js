@@ -88,7 +88,6 @@ window.onload = function () {
 $(async function(){
 
   let chats = await get_chats()
-  console.log(chats)
 
   // store fetched chats to session storage
   sessionStorage.setItem("chats", JSON.stringify(chats))

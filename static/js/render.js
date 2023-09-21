@@ -37,8 +37,7 @@ export function render_previous_chats(chats, listener_function){
         </div>
         <div class="col-sm-9 col-xs-9 sideBar-main">
           <div class="row">
-            <div class="col-sm-8 col-xs-8 sideBar-name" style="height:15
-            em">
+            <div class="col-sm-8 col-xs-8 sideBar-name" style="height:100px">
               <span class="name-meta">${e.role_object.GPT_role[0].toUpperCase() + e.role_object.GPT_role.slice(1)}
             </span><br>
               <span class="time-meta">${e.role_object.setting}

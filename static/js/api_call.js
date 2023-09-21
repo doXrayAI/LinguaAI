@@ -1,5 +1,3 @@
-
-
 export async function get_chats(){
     
     let url = `/chats`
@@ -34,7 +32,6 @@ export async function validate_context(user_language, language_level, setting_de
     return fetch(url)
         .then((response) => response.json())
         .then((data) => {
-            console.log(data.content)
             return data.content
         })
 }
@@ -67,8 +64,4 @@ export async function send_new_message(message, id){
 
     return fetch(url)
         .then((response) => response.json())
-        .then((data) => {
-            console.log("AAAAA :", data)
-            return data
-        })
 }
