@@ -78,6 +78,10 @@ Visualisation of the previously described process is available as a flow diagram
 
 The implementation offers a stateful and stateless implementation of the same component.
 
+#### Refinement bot prompt alternatives
+
+In order to assess the quality and performance of different prompt alternatives, two evaluator bots have been developed, focusing on assessing the role fitness and language level match. Thee implementation can be found in ```src/bots/evaluation_bot.py``` file.
+
 ### Stateful components
 
 - Thread - API wrapper class that keeps the record of previous messages
