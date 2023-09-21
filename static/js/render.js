@@ -87,7 +87,8 @@ export function render_current_chat(chat){
                 <div class="col-sm-12 message-main-${role_class}">
                   <div class="${role_class}">
                     <div class="message-text">
-                     ${m.content}
+                     ${m.content[0].toUpperCase() + m.content.slice(1)}
+                     </span><br>
                     </div>
                   </div>
                 </div>
