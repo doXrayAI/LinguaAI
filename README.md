@@ -4,6 +4,10 @@
 
 The Language Learning project provides a chatbot platform aimed at improving users' language skills. The main goal is to offer the user a chatbot interlocutor tailored for his preferred language and proficiency level. For the fully customizable learning experience the user can choose the situation in which he wishes to converse.
 
+A more detailed description is available in a [blog post](https://blog.doxray.com/p/linguaai-ai-powered-personalized). 
+
+![LinguaAI](./LinguaAI.png)
+
 ## Running locally
 
 To run the application locally, after cloning the repository, the following has to be executed:
