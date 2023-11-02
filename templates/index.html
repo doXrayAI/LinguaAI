@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Language Learning Chat</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" type="text/css" href="static/css/main.css"/>
+
+    </head>
+
+    <body>
+        <div class="container app">
+            <div class="row app-one">
+
+              <!--- SIDEBAR BEGINS -->
+              <div class="col-sm-4 side"> 
+                <div class="side-one">
+                  <div class="row heading">
+                    <div class="col-sm-3 col-xs-3 heading-avatar">
+                      <div class="heading-avatar-icon">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png">
+                      </div>
+                    </div>
+                    <div class="col-sm-2 col-xs-2 heading-compose  pull-right">
+                      <i class="fa fa-comments fa-2x  pull-right" aria-hidden="true"></i>
+                    </div>
+                  </div>
+          
+                  <div class="row searchBox">
+                    <div class="col-sm-12 searchBox-inner">
+                      <div class="form-group has-feedback">
+                        <input id="searchText" type="text" class="form-control" name="searchText" placeholder="Search">
+                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                      </div>
+                    </div>
+                  </div>
+          
+                <!---Previous chat list begins -->
+                  <div id="previous-chat-container" class="row sideBar">
+
+                  </div>
+                </div>
+                
+                <!--SIDE TWO BEGINS-->
+                <div class="side-two">
+                  <div class="row newMessage-heading">
+                    <div class="row newMessage-main">
+                      <div class="col-sm-2 col-xs-2 newMessage-back">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                      </div>
+                      <div class="col-sm-10 col-xs-10 newMessage-title">
+                        New Chat
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row compose-sideBar">
+                    <div class="row sideBar-body new-chat" style="height: fit-content;">
+                    <form id="user-selection-form" style="display: inline-block;">
+                        <div class="form-group">
+                          <label for="language">Language</label>
+                          <input type="text" class="form-control" id="language" aria-describedby="languageHelp" placeholder="Enter language" required>
+                          <small id="languageHelp" class="form-text text-muted">Choose a language.</small>
+                        </div>
+                        <div class="form-group">
+                          <label for="setting-description">Setting description</label><br>
+                          <input class="form-control" id="setting-description" aria-describedby="description-error" placeholder="i.e: In a cafe..." required>
+                          <small id="description-error" class="form-text text-muted" style="color:lightcoral ;"></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="language-level">Language level</label>
+                            <select id="language-level" name="language-level">
+                                <option value="A1">A1   </option>
+                                <option value="A2">A2   </option>
+                                <option value="B1">B1   </option>
+                                <option value="B2">B2   </option>
+                                <option value="C1">C1   </option>
+                                <option value="C2">C2   </option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary submitSelectionBtn" style="background-color: #00bfa5; display: flex; border:none; width: 130px; justify-content: center;">Submit</button>
+                        
+                      </form>
+                      </div>
+                  </div>
+        
+                </div>
+                <!--Side two ends-->
+
+              </div>
+              <!---Sidebar ends -->
+
+
+          
+              <!-- CONVERSATION BEGINS -->
+              <div class="col-sm-8 conversation">
+
+
+                <!-- Heading for conversation begins -->
+                <div class="row heading">
+                  <div class="col-sm-2 col-md-1 col-xs-3 heading-avatar">
+                    <div class="heading-avatar-icon">
+                      <img src="https://bootdey.com/img/Content/avatar/avatar1.png">
+                    </div>
+                  </div>
+                  <div class="col-sm-8 col-xs-7 heading-name" >
+                    <a class="heading-name-meta">
+                    </a>
+                    <span class="heading-online">Online</span>
+                  </div>
+                </div>
+                <!--- Heading for conversation ends -->
+          
+                <!-- CONVERSATION -->
+                <div class="row message" id="conversation">
+                </div>
+          
+                <!-- REPLY BAR begins-->
+                <div class="row reply">
+                  <!--<div class="col-sm-1 col-xs-1 reply-emojis">
+                    <i class="fa fa-smile-o fa-2x"></i>
+                  </div> -->
+                  <div class="col-sm-11 col-xs-11 reply-main">
+                    <textarea class="form-control" rows="1" id="comment" placeholder="Message..."></textarea>
+                  </div>
+                  <!--<div class="col-sm-1 col-xs-1 reply-recording">
+                    <i class="fa fa-microphone fa-2x" aria-hidden="true"></i>
+                  </div> -->
+                  <div class="col-sm-1 col-xs-1 reply-send" id="reply-send">
+                    <i class="fa fa-send fa-2x" aria-hidden="true"></i>
+                  </div>
+                </div>
+                <!-- REPLY BAR ends-->
+
+            </div>
+            </div>
+          </div>
+          
+</body>
+    <script src="static/js/api_call.js" type="application/javascript"></script>
+    <script src="static/js/render.js" type="module"></script>
+    <script src="static/js/main.js" type="module"></script>
+    
+</html>

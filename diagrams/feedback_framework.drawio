@@ -1,0 +1,163 @@
+<mxfile host="65bd71144e">
+    <diagram id="72-yJwcmgs6wtEyisd6d" name="Page-1">
+        <mxGraphModel dx="1834" dy="939" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="Language learning dialogue bot components" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="340" y="80" width="170" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="In the character" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="140" y="240" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="Using appropriate language proficiency leve" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="550" y="235" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="Inciting user to talk more" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="305" y="240" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="component" style="endArrow=classic;html=1;exitX=0.041;exitY=1.018;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="2" target="3" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="420" y="430" as="sourcePoint"/>
+                        <mxPoint x="470" y="380" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="10" value="component" style="endArrow=classic;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" parent="1" source="2" target="6" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="356.9699999999998" y="161.26" as="sourcePoint"/>
+                        <mxPoint x="254.72482035646044" y="257.3797142105975" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="11" value="component" style="endArrow=classic;html=1;exitX=0.923;exitY=1.006;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="2" target="5" edge="1">
+                    <mxGeometry x="-0.2205" y="-3" width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="366.9699999999998" y="171.26" as="sourcePoint"/>
+                        <mxPoint x="264.72482035646044" y="267.3797142105975" as="targetPoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="15" value="gpt response ranking&amp;nbsp;" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="190" y="780" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="The evaluation can be performed based on the evaluation framework or some other metric" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;" parent="1" vertex="1">
+                    <mxGeometry x="180" y="690" width="150" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="&lt;h1&gt;&lt;br&gt;&lt;/h1&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="20" width="150" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="21" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="466.1379310344828" y="550" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="21" value="Vocabulary" style="swimlane;" parent="1" vertex="1">
+                    <mxGeometry x="412.5" y="420" width="107.5" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="Chain of Thought" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="21" vertex="1">
+                    <mxGeometry x="-12.5" y="25" width="120" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" style="edgeStyle=none;html=1;" parent="1" source="22" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="597.5" y="550" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="22" value="Sentence length" style="swimlane;" parent="1" vertex="1">
+                    <mxGeometry x="535" y="420" width="125" height="110" as="geometry">
+                        <mxRectangle x="565" y="420" width="130" height="30" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="27" value="Chain of Thought" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="22" vertex="1">
+                    <mxGeometry x="-5" y="25" width="120" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" style="edgeStyle=none;html=1;" parent="1" source="23" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="753.75" y="550" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="23" value="" style="swimlane;" parent="1" vertex="1">
+                    <mxGeometry x="700" y="420" width="107.5" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="Chain of Thought" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="23" vertex="1">
+                    <mxGeometry x="-12.5" y="25" width="120" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value=". . ." style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="660" y="445" width="40" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="" style="endArrow=classic;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0;exitY=1;exitDx=0;exitDy=0;" parent="1" source="5" target="21" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="410" y="430" as="sourcePoint"/>
+                        <mxPoint x="460" y="380" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="30" value="" style="endArrow=classic;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="5" target="22" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="410" y="430" as="sourcePoint"/>
+                        <mxPoint x="460" y="380" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="31" value="" style="endArrow=classic;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.833;exitY=0.938;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="5" target="23" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="410" y="430" as="sourcePoint"/>
+                        <mxPoint x="460" y="380" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="38" value="suggestion" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="430" y="550" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="suggestion" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="550" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value="suggestion" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="713.75" y="550" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="Refinement bot 1&lt;br&gt;- language level" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="100" y="1000" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="FUTURE IMPROVEMENTS:&lt;br&gt;&lt;br&gt;- tracking user preference&lt;br&gt;- tracking what kind of engagement the user likes&lt;br&gt;- tracking previous mistakes" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="10" y="1270" width="280" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="46" value="Option 1: hand crafted evaluation framework" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="20" y="30" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" value="Option 2: ranking of multiple gpt responses" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="20" y="610" width="130" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="Option 3: Refinement bots" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="20" y="910" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="Refinement bot 2&lt;br&gt;- more natural/conversational expressions" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="1000" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" value="Refinement bot 3&lt;br&gt;- inciting user to talk more" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="380" y="1000" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" value="Refinement bot 4&lt;br&gt;- following the role" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="1000" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" value=". . .&amp;nbsp;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="653.75" y="1020" width="40" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="Refinement bot 5&lt;br&gt;- story enhancer" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="693.75" y="1000" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" value="" style="endArrow=none;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint y="600" as="sourcePoint"/>
+                        <mxPoint x="850" y="600" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="57" value="" style="endArrow=none;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint y="890" as="sourcePoint"/>
+                        <mxPoint x="850" y="890" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="58" value="" style="endArrow=none;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint y="1160" as="sourcePoint"/>
+                        <mxPoint x="850" y="1160" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
