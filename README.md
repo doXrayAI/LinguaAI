@@ -1,4 +1,5 @@
-# 2023-languagelearning
+# LinguaAI: AI-Powered Personalized Conversations for Comprehensive Language Learning
+### Beyond Traditional Learning: The GPT-4 Edge in Adaptive Language Tutoring for any Language and any Level.
 
 ## Project description
 
